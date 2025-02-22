@@ -1,0 +1,929 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&family=Share+Tech&family=VT323&display=swap');
+
+/* styles.css */
+body {
+    font-family: Inter, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+header {
+    background-color: #fff;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    outline: none;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0 100px;
+    z-index: 2;
+}
+
+.barra_de_pesquisa {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 500px;
+}
+
+.barra_pesquisar {
+    width: 100%;
+    padding: 2vh;
+    border-radius: 10px;
+    font-size: 16px;
+    border: 4px solid #244aa5;
+}
+
+.barra_pesquisar::placeholder {
+    color: #999;
+    /* Cor do texto placeholder */
+}
+
+.lupa_de_pesquisa {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+
+.lupa_de_pesquisa img {
+    display: block;
+}
+
+.drop_down {
+    position: relative;
+    display: inline-block;
+    background-color: #f9f9f9;
+    border: 3px solid #000000;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    z-index: 10;
+}
+
+.container_nome_usuario {
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+}
+
+.container_nome_usuario h1 {
+    font-size: 18px;
+    color: #333;
+    margin: 0;
+    padding-right: 10px;
+    /* Espaço entre o texto e a imagem */
+}
+
+.tracos_drop {
+    width: 20px;
+    /* Largura da imagem */
+    height: auto;
+    /* Altura automática para manter a proporção */
+    pointer-events: none;
+}
+
+.dropdown_content {
+    position: absolute;
+    /* Posiciona o dropdown em relação ao contêiner pai */
+    background-color: #f9f9f9;
+    /* Cor de fundo */
+    border: 3px solid #000000;
+    /* Borda */
+    border-top: none;
+    /* Remove a borda superior */
+    border-radius: 0 0 5px 5px;
+    /* Apenas as bordas inferiores serão arredondadas */
+    padding: 10px;
+    /* Espaçamento interno */
+    margin-top: 8px;
+    width: calc(100% - 25px);
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    z-index: 1;
+    left: 0;
+}
+
+.dropdown_content a {
+    color: #333;
+    /* Cor do texto */
+    padding: 8px 12px;
+    /* Espaçamento interno */
+    text-decoration: none;
+    /* Remove o sublinhado */
+    display: block;
+    /* Faz o link ocupar a largura toda */
+}
+
+.dropdown_content a:hover {
+    background-color: #e0e0e0;
+    /* Cor de fundo ao passar o mouse */
+}
+
+.show {
+    max-height: 300px;
+    /* Define a altura máxima do dropdown, ajuste conforme necessário */
+    opacity: 1;
+    /* Torna o conteúdo opaco */
+}
+
+.container_filtro {
+    display: flex;
+    /* Define o layout como flexível */
+    border-radius: 5px;
+    /* Borda arredondada */
+    width: 100%;
+    margin-top: 10vh;
+    height: 20vh;
+    justify-content: center;
+}
+
+.bloco_filtro_fundo {
+    display: flex;
+    width: 70%;
+    border-radius: 20px;
+    border: 4px solid #ed1b24;
+    justify-content: space-between;
+    /* Distribui o espaço igualmente entre os itens */
+    align-items: center;
+    /* Alinha itens verticalmente ao centro */
+    padding: 10px;
+    gap: 10px;
+    /* Espaçamento entre os blocos */
+}
+
+.bloco_idade,
+.blocos_selecao {
+    flex: 1;
+    /* Permite que todos os blocos se expandam igualmente */
+}
+
+.bloco_idade input[type="number"] {
+    width: 100%;
+    /* Largura total do campo de número */
+    padding: 10px;
+    /* Espaçamento interno */
+    border-radius: 15px;
+    /* Bordas arredondadas */
+    background-color: #244aa5;
+    /* Cor de fundo */
+    color: #ffffff;
+    /* Cor do texto */
+    font-size: 16px;
+    /* Tamanho da fonte */
+    border: none;
+    /* Remove a borda padrão */
+    box-sizing: border-box;
+    /* Inclui bordas e padding na largura total */
+}
+
+.bloco_idade input::placeholder {
+    color: rgb(216, 216, 216);
+}
+
+.blocos_selecao {
+    flex: 1;
+    /* Permite que os blocos se expandam para preencher o espaço */
+    background-color: #244aa5;
+    /* Cor de fundo */
+    border-radius: 15px;
+    /* Bordas arredondadas */
+    padding: 0;
+    /* Remove padding para que o select ocupe toda a área */
+}
+
+.blocos_selecao select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: #ffffff;
+    color: #ffffff;
+    font-size: 15px;
+    cursor: pointer;
+    border: none;
+    appearance: none;
+    -webkit-appearance: none;
+    background: url('/seta_select.png') no-repeat right center;
+    background-size: 20px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.blocos_selecao select::-ms-expand {
+    display: none;
+}
+
+.blocos_selecao select option {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.container_curso {
+    margin-top: 10vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+}
+
+.bloco_texto {
+    background-color: #244aa5;
+    width: 71%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.bloco_texto h1 {
+    margin-left: 2vh;
+    color: #fabc09;
+}
+
+.container_curso_imagem_nome {
+    width: 100%;
+    height: 10vh;
+    margin-top: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bloco_nome_imagem_curso {
+    display: flex;
+    width: 71%;
+    height: 100%;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.bloco_nome_imagem_curso h1 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 15px;
+}
+
+.container_fundo_aluno {
+    width: 100%;
+    min-height: 35vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px;
+}
+
+
+.bloco_alunos {
+    width: 71%;
+    min-height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px;
+}
+
+
+.box_Aluno {
+    background-color: #ffffff;
+    border: 3px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.267);
+    width: 250px;
+    padding: 20px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    color: #244aa5;
+}
+
+.box_Aluno span:first-child {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.box_Aluno span:nth-child(2) {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.box_Aluno img {
+    width: 50px;
+    height: auto;
+    margin-top: 10px;
+}
+
+.box_Aluno button {
+    background-color: #244aa5;
+    border: none;
+    color: #ffd700;
+    padding: 10px 15px;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+.box_Aluno button:hover {
+    background-color: #ffd700;
+    color: #244aa5;
+}
+
+.container_espacamento {
+    width: 100%;
+    height: 5vh;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-top: 5vh;
+}
+
+.bloco_espacamento {
+    background-color: #244aa5;
+    display: flex;
+    width: 71%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.container_ver_mais {
+    position: fixed;
+    background-color: rgba(44, 44, 44, 0.73);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    display: none;
+}
+
+.bloco_ver_mais {
+    background-color: #ffffff;
+    width: 50%;
+    height: 93vh;
+    border-radius: 20px;
+    border: 3px solid #244aa5;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-left: 50vh;
+    margin-top: 3vh;
+}
+
+
+.container_fechar_ver_mais {
+    width: 100%;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+}
+
+.imagem_wrapper {
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.imagem_wrapper::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+    border-radius: 10px;
+}
+
+.imagem_wrapper img {
+    max-height: 100%;
+    max-width: 100%;
+    display: block;
+    position: relative;
+    z-index: 2;
+}
+
+.imagem_wrapper:hover::before {
+    opacity: 1;
+}
+
+.imagem_wrapper:hover img {
+    filter: brightness(0.8);
+}
+
+.container_imagem_info {
+    width: 100%;
+    height: 35vh;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.bloco_foto_aluno {
+    width: 30%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.bloco_info_aluno {
+    display: flex;
+    width: 40%;
+    height: 100%;
+}
+
+.bloco_foto_aluno img {
+    width: 90%;
+    height: 80%;
+    border-radius: 30%;
+}
+
+.bloco_info_aluno {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#nome_do_aluno {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.bloco_info_aluno span {
+    font-size: 1rem;
+    font-weight: bolder;
+}
+
+.bloco_info_aluno span span {
+    color: #343434;
+    font-size: small;
+}
+
+.mensagem_no_alunos {
+    font-weight: 800;
+    font-size: 20px;
+    color: gray;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+}
+
+
+.bloco_botao_interesse button {
+    background-color: #244aa5;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+    width: 43%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bloco_botao_interesse button:hover {
+    background-color: #0056b3;
+}
+
+.container_interno_inferior {
+    width: 100%;
+    height: 52vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container_texto {
+    width: 75%;
+    height: 6vh;
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    color: #244aa5;
+}
+
+.container_emblemas {
+    width: 100%;
+    height: 15vh;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.bloco_emblemas {
+    width: 75%;
+    height: 100%;
+    display: flex;
+    border-radius: 20px;
+    border: 3px solid #244aa5;
+    /* Adiciona a borda azul de 3px */
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.box_emblemas {
+    background-color: #244aa5;
+    width: 12vh;
+    height: 80%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-radius: 50%;
+}
+
+.box_emblemas img {
+    width: 70%;
+}
+
+.container_descricao {
+    width: 100%;
+    height: 15vh;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.bloco_descricao {
+    background-color: rgb(255, 255, 255);
+    width: 75%;
+    height: 100%;
+    display: flex;
+    border-radius: 20px;
+    border: 3px solid #244aa5;
+    /* Adiciona a borda azul de 3px */
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 8px;
+    /* Adiciona espaçamento interno */
+    box-sizing: border-box;
+    /* Inclui o padding e a borda no tamanho total da div */
+}
+
+.container_botao_interesse {
+    width: 30%;
+    height: 10vh;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.bloco_botao_interesse button {
+    width: 100%;
+}
+
+.bloco_info_aluno button {
+    background-color: #244aa5;
+    /* Cor de fundo do botão */
+    color: #fff;
+    /* Cor do texto do botão */
+    border: none;
+    /* Remove a borda padrão do botão */
+    border-radius: 5px;
+    /* Bordas arredondadas para o botão */
+    padding: 10px 20px;
+    /* Espaçamento interno do botão */
+    font-size: 1rem;
+    /* Tamanho da fonte do botão */
+    cursor: pointer;
+    /* Muda o cursor para pointer ao passar sobre o botão */
+    transition: background-color 0.3s ease;
+    /* Transição suave para a cor de fundo */
+    margin-top: 15px;
+    /* Espaçamento acima do botão */
+    display: flex;
+    /* Permite o alinhamento dos itens internos */
+    align-items: center;
+    /* Alinha verticalmente os itens no centro */
+    gap: 10px;
+    /* Espaçamento entre o texto e a imagem */
+    width: 43%;
+    /* Ajusta a largura conforme o conteúdo */
+}
+
+.bloco_info_aluno button:hover {
+    background-color: #0056b3;
+    /* Cor de fundo do botão ao passar o mouse */
+}
+
+.bloco_info_aluno button img {
+    width: 20px;
+    /* Largura da imagem */
+    height: auto;
+    /* Mantém a proporção da imagem */
+}
+
+.container_interesse {
+    position: fixed;
+    /* Mantém o contêiner fixo na tela */
+    background-color: rgba(44, 44, 44, 0.73);
+    /* Cor com opacidade */
+    width: 100%;
+    height: 100%;
+    /* Ocupa toda a altura da tela */
+    top: 0;
+    /* Alinha ao topo da tela */
+    left: 0;
+    /* Alinha à esquerda da tela */
+    z-index: 9999;
+    /* Garante que o contêiner esteja acima de outros elementos */
+    display: flex;
+    /* Para centralizar o conteúdo, se necessário */
+    align-items: center;
+    /* Centraliza verticalmente o conteúdo */
+    justify-content: center;
+    /* Centraliza horizontalmente o conteúdo */
+    backdrop-filter: blur(10px);
+    /* Adiciona o efeito de desfoque */
+}
+
+.bloco_interesse {
+    background-color: #ffffff;
+    width: 30%;
+    height: 30vh;
+    border-radius: 20px;
+    border: 3px solid #244aa5;
+    margin-left: 70vh;
+    margin-top: 30vh;
+}
+
+.container_notificacao {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Centraliza o conteúdo principal */
+    position: relative;
+    /* Posicionamento relativo para permitir a posição absoluta da imagem */
+    font-size: 30px;
+    color: #244aa5;
+    font-weight: 700;
+}
+
+.notificacao {
+    flex: 1;
+    /* Permite que o span ocupe o espaço disponível */
+    text-align: center;
+    /* Centraliza o texto */
+}
+
+.imagem_wrapper2 {
+    position: absolute;
+    right: 20px;
+    /* Posiciona a imagem à direita */
+    display: flex;
+    align-items: center;
+    /* Centraliza a imagem verticalmente */
+    border-radius: 5px;
+    /* Arredonda os cantos */
+    transition: background-color 0.3s ease;
+    /* Transição suave para o fundo */
+}
+
+.imagem_wrapper2:hover {
+    background-color: rgba(255, 0, 0, 0.3);
+    /* Fundo vermelho suave ao passar o mouse */
+}
+
+.container_notificacao img {
+    height: 30%;
+    /* Ajusta a altura da imagem conforme necessário */
+    cursor: pointer;
+    /* Adiciona um cursor de pointer para indicar que a imagem é clicável */
+}
+
+
+.container_mensagem_notificacao {
+    width: 70%;
+    height: 12vh;
+    display: flex;
+    /* Ativa o flexbox */
+    align-items: center;
+    /* Centraliza verticalmente */
+    justify-content: center;
+    /* Centraliza horizontalmente */
+    text-align: justify;
+    /* Justifica o texto dentro do span */
+    font-size: 18px;
+    margin: 0 auto;
+    /* Centraliza a div horizontalmente */
+}
+
+.container_mensagem_notificacao span {
+    width: 100%;
+    /* Garante que o span ocupe toda a largura disponível */
+}
+
+.container_fechamento_ok {
+    width: 100%;
+    height: 8vh;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.container_fechamento_ok button {
+    width: 25%;
+    background-color: #FFD700;
+    /* Fundo amarelo */
+    color: #fff;
+    /* Texto branco */
+    border: none;
+    /* Remove a borda padrão */
+    border-radius: 5px;
+    /* Bordas arredondadas */
+    padding: 10px 20px;
+    /* Espaçamento interno */
+    font-size: 1rem;
+    /* Tamanho da fonte */
+    font-weight: bold;
+    /* Deixa o texto em negrito */
+    cursor: pointer;
+    /* Muda o cursor para pointer ao passar sobre o botão */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    /* Transição suave para a cor de fundo e transformação */
+}
+
+.container_fechamento_ok button:hover {
+    background-color: #FFC107;
+    /* Fundo amarelo mais claro ao passar o mouse */
+    transform: scale(1.05);
+    /* Aumenta ligeiramente o tamanho ao passar o mouse */
+}
+
+.container_fechamento_ok button:active {
+    background-color: #FFB300;
+    /* Fundo amarelo escuro ao clicar */
+    transform: scale(0.95);
+    /* Diminui ligeiramente o tamanho ao clicar */
+}
+
+.nome_do_aluno_mensagem {
+    font-weight: 700;
+}
+
+/* Footer */
+footer {
+    background-color: #fff;
+    padding: 20px;
+    border-top: 1px solid #ddd;
+    text-align: center;
+    margin-top: 5vh;
+}
+
+.footer-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 20px;
+    position: relative;
+}
+
+.footer-content>div {
+    flex: 1;
+    padding: 10px;
+    position: relative;
+}
+
+.footer-content>div:nth-child(1)::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    right: 0;
+    height: 80%;
+    width: 3px;
+    background-color: yellow;
+}
+
+.footer-content>div:nth-child(2)::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    right: 0;
+    height: 80%;
+    width: 3px;
+    background-color: blue;
+}
+
+.logo-footer img {
+    width: 255px;
+    height: 100px;
+}
+
+#p-geral {
+    color: red;
+}
+
+#p-curso {
+    font-size: 24px;
+}
+
+.p-descricao {
+    margin-top: 40px;
+    margin-bottom: 100px;
+}
+
+.footer-note {
+    margin-top: 20px;
+    color: #999;
+}
+
+.medal {
+    width: 20px;
+    height: 20px;
+}
+
+.gold-medal {
+    width: 35px;
+    height: 35px;
+}
+
+.silver-medal {
+    width: 35px;
+    height: 35px;
+}
+
+.bronze-medal {
+    width: 35px;
+    height: 35px;
+}
+
+/* Estilo dos títulos do footer */
+.contact h3,
+.social-media h3 {
+    color: #ED1B24;
+    font-family: 'Share Tech', sans-serif;
+    font-size: 24px;
+}
+
+.contact h3 {
+    color: #ED1B24;
+    font-family: 'Share Tech', sans-serif;
+    bottom: 10px;
+    position: relative;
+    font-size: 30px;
+}
+
+.social-media h3 {
+    color: #ED1B24;
+    font-family: 'Share Tech', sans-serif;
+    bottom: 10px;
+    position: relative;
+    font-size: 30px;
+}

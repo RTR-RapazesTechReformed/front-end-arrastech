@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vagas | Tech Jobs</title>
+    <link rel="stylesheet" href="../css/tela_rh_vagas.css">
+    <link rel="stylesheet" href="../css/loader.css">
+    <link rel="icon" type="image/x-icon" href="/logo-arrastao.png">
+</head>
+
+<script src="../js/drop_down.js"></script>
+<script src="../js/tela_rh_ver_mais.js"></script>
+<script src="../js/localiza_usuario_header.js"></script>
+<script src="../js/buscar_foto_perfil.js"></script>
+<script type="module" src="../js/rh_vagas.js"></script>
+<script src="../js/medalhas.js"></script>
+<script src="../js/logout.js"></script>
+<script src="../js/autentificacao.js"></script>
+
+<body>
+    <!-- Container do VLibras Widget -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <header>
+        <div class="header-content">
+            <img src="/logo_arrastao.png" alt="logo arrastão com o nome tech jobs" class="logo-header">
+            <div class="barra_de_pesquisa">
+                <input class="barra_pesquisar" type="text" placeholder="Buscar por uma pessoa..."
+                    oninput="buscarAlunoPorNome(this.value)">
+                <img class="lupa_de_pesquisa" src="/lupa_de_pesquisa.png" alt="Lupa pesquisar">
+            </div>
+            <div class="drop_down" onclick="toggleDropdown()">
+                <div class="container_nome_usuario">
+                    <img id="profileImageHeader" class="header_img_usuario" src="" alt="Imagem de perfil">
+                    <h1 id="id_nome_usuario">Nome do Usuário</h1>
+                    <img class="tracos_drop" src="/tracos_drop.png" alt="Traços drop down">
+                </div>
+                <div id="dropdown-content" class="dropdown_content">
+                    <a href="#">Vagas</a>
+                    <a href="./classificacao_aluno_rh.html">Classificação</a>
+                    <a href="./edicao_rh.html">Perfil</a>
+                    <a href="#" onclick="fazerLogout()">Sair</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div id="loader" class="container_loader">
+        <div class="loader"></div>
+    </div>
+
+    <div style="display: none;" class="container_interesse">
+        <div class="bloco_interesse">
+            <div class="container_notificacao">
+                <span class="notificacao">Notificação Enviada</span>
+                <div class="imagem_wrapper2">
+                    <img onclick="fecharNotificacao()" src="/x_de_fechamento.png"
+                        alt="fechar aba de ver mais sobre o aluno">
+                </div>
+            </div>
+            <div class="container_mensagem_notificacao">
+                <span>
+                    Notificamos o Projeto Arrastão e <span class="nome_do_aluno_mensagem">Nome do Aluno</span> sobre seu
+                    interesse. Te daremos retorno em breve!
+                </span>
+            </div>
+            <div class="container_fechamento_ok">
+                <button onclick="fecharNotificacao()">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container_ver_mais">
+        <div class="bloco_ver_mais">
+            <div class="container_fechar_ver_mais">
+                <div class="imagem_wrapper">
+                    <img onclick="fecharVerMais_img()" src="/x_de_fechamento.png"
+                        alt="fechar aba de ver mais sobre o aluno">
+                </div>
+            </div>
+            <div class="container_imagem_info">
+                <div class="bloco_foto_aluno">
+                    <img src="/foto perfil.png" alt="foto de perfil do aluno">
+                </div>
+                <div class="bloco_info_aluno">
+                    <h1 id="nome_do_aluno">Nome do Aluno</h1>
+                    <span>Idade: <span id="idade_do_aluno">16</span></span>
+                    <span>Município: <span id="municipio_do_aluno">Carapicuíba</span></span>
+                    <span>Escolaridade: <span id="escolaridade_do_aluno">Cursando Ensino Médio</span></span>
+                    <span>Email: <span id="email_do_aluno">aluno.nome@email.com</span></span>
+                </div>
+            </div>
+            <div class="container_interno_inferior">
+                <div class="container_texto">
+                    <span>Emblemas:</span>
+                </div>
+                <div class="container_emblemas">
+                    <div class="bloco_emblemas">
+                        <div class="box_emblemas">
+                            <img src="/culinaria_prata.png" alt="">
+                        </div>
+                        <div class="box_emblemas">
+                            <img src="/culinaria_prata.png" alt="">
+                        </div>
+                        <div class="box_emblemas">
+                            <img src="/culinaria_prata.png" alt="">
+                        </div>
+                        <div class="box_emblemas">
+                            <img src="/culinaria_prata.png" alt="">
+                        </div>
+                        <div class="box_emblemas">
+                            <img src="/culinaria_prata.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="container_texto">
+                    <span>Descrição do Aluno:</span>
+                </div>
+                <div class="container_descricao">
+                    <div class="bloco_descricao">
+                        <span id="descricao_do_aluno">
+                            Descrição do aluno
+                        </span>
+                    </div>
+                </div>
+                <div class="container_botao_interesse">
+                    <div class="bloco_botao_interesse">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container_filtro">
+        <div class="bloco_filtro_fundo">
+            <div class="blocos_selecao">
+                <select id="etnia" onchange="exibirAlunosPorEtnia(this.value)">
+                    <option value="">Etnia</option>
+                    <option value="Branca">Branca</option>
+                    <option value="Preta">Preta</option>
+                    <option value="Parda">Parda</option>
+                    <option value="Amarela">Amarela</option>
+                    <option value="Indígena">Indígena</option>
+                </select>
+            </div>
+
+            <div class="blocos_selecao">
+                <select id="sexo" onchange="exibirAlunosPorSexo(this.value)">
+                    <option value="">Sexo</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Feminino">Feminino</option>
+                </select>
+            </div>
+
+            <div class="blocos_selecao">
+                <select id="escolaridade">
+                    <option value="opc_escolaridade">Escolaridade</option>
+                    <option value="ensino_fundamental">Ensino Fundamental</option>
+                    <option value="ensino_medio">Ensino Médio</option>
+                    <option value="tecnico">Curso Técnico</option>
+                </select>
+            </div>
+            <div class="blocos_selecao">
+                <select id="municipio">
+                    <option value="opc_municipio">Cidade</option>
+                    <option value="adema">Adema</option>
+                    <option value="sao_paulo">São Paulo</option>
+                    <option value="santo_andre">Santo André</option>
+                    <option value="santo_ambe">Santo Amaro</option>
+                    <option value="sao_caetano_do_sul">São Caetano do Sul</option>
+                    <option value="sao_bernardo_do_campo">São Bernardo do Campo</option>
+                    <option value="sao_jose_dos_campos">São José dos Campos</option>
+                    <option value="guarulhos">Guarulhos</option>
+                    <option value="maua">Mauá</option>
+                    <option value="diadema">Diadema</option>
+                    <option value="carapicuiba">Carapicuíba</option>
+                    <option value="taboao_da_serra">Taboão da Serra</option>
+                    <option value="embura_guacu">Embu das Artes</option>
+                    <option value="vargem_grande_paulista">Vargem Grande Paulista</option>
+                    <option value="biritiba_mirim">Biritiba Mirim</option>
+                    <option value="cotia">Cotia</option>
+                    <option value="itapecerica_da_serra">Itapecerica da Serra</option>
+                    <option value="mogi_das_cruzes">Mogi das Cruzes</option>
+                    <option value="suzano">Suzano</option>
+                    <option value="jandira">Jandira</option>
+                    <option value="barueri">Barueri</option>
+                    <option value="jose_bonifacio">José Bonifácio</option>
+                    <option value="santa_isabel">Santa Isabel</option>
+                    <option value="rio_grande_da_sul">Rio Grande da Sul</option>
+                    <option value="vila_sao_paulo">Vila São Paulo</option>
+                </select>
+            </div>
+            <div class="blocos_selecao">
+                <select id="cursos">
+                    <option value="opc_categorias">Categorias</option>
+                    <option value="curso1">Curso de Informática</option>
+                    <option value="curso2">Curso de Costura</option>
+                    <option value="curso3">Curso de Enfermagem</option>
+                    <option value="curso4">Curso de Eletricista</option>
+                    <option value="curso5">Curso de Gastronomia</option>
+                    <option value="curso6">Curso de Design Gráfico</option>
+                    <option value="curso7">Curso de Fotografia</option>
+                    <option value="curso8">Curso de Empreendedorismo</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="container_curso">
+        <div class="bloco_texto">
+            <h1>Cursos</h1>
+        </div>
+    </div>
+
+    <div id="cursos_container">
+        <!-- AS INFORMAÇÕES DOS CURSOS E DOS ALUNOS SERÁ INSERIDOS -->
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="logo-footer">
+                <img src="/logo-techJobs.JPG" alt="logo arrastão com o nome tech jobs">
+            </div>
+            <div class="contact">
+                <h3 id="titulo-contact">Contato</h3>
+                <p>Email: <a href="mailto:tech.for.all.0824@gmail.com">tech.for.all.0824@gmail.com</a></p>
+                <p>Email: <a href="mailto:arrastao@arrastao.org.br">arrastao@arrastao.org.br</a></p>
+                <p>Telefone: <a href="tel:+551158433366">(11) 5843-3366</a></p>
+            </div>
+            <div class="social-media">
+                <h3>Redes Sociais</h3>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/company/projetoarrastao/?originalSubdomain=br" target="_blank">
+                        <img src="/linkedin.svg" alt="LinkedIn">
+                    </a>
+                    <a href="https://www.instagram.com/projetoarrastao/" target="_blank">
+                        <img src="/insta.svg" alt="Instagram">
+                    </a>
+                    <a href="https://www.facebook.com/ProjetoArrastao/?locale=pt_BR" target="_blank">
+                        <img src="/face.svg" alt="Facebook">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <p class="footer-note">© 2024 Todos os direitos reservados</p>
+    </footer>
+
+</body>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+
+</html>

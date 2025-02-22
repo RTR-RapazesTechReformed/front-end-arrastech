@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&family=Share+Tech&family=VT323&display=swap');
+
+/* styles.css */
+body {
+    font-family: Inter, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+header {
+    background-color: #fff;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+a {
+    text-decoration: none; 
+    outline: none; 
+}
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0 100px;
+    z-index: 2;
+}
+
+.logo {
+    height: 50px;
+}
+
+.login-buttons .login-btn,
+.register-btn {
+    background-color: #EEAD2D;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.register-btn {
+    background-color: #EEAD2D;
+    color: black;
+    z-index: 5;
+}
+
+
+.login-buttons .login-btn:hover,
+.register-btn:hover {
+    transform: scale(1.05);
+    background-color: #EEAD2D; 
+}
+
+.intro-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px 100px;
+    z-index: 5;
+}
+
+.intro-text {
+    font-size: 48px;
+    color: #333;
+    text-align: left;
+    z-index: 5;
+}
+
+.grafico-img {
+    height: 567px;
+    width: 567px;
+    margin-right: 100px;
+    z-index: 5;
+}
+
+#texto{
+    font-size: 32px;
+    width: 800px;
+    color: #333;
+}
+
+#svg-superior {
+    position: absolute;
+    top: 10.5px;
+    left: 800.32px;
+    width: 1000.18px;
+    height: 800px;
+    margin-top: -100px;
+    z-index: 0;
+}
+
+#svg-superior2 {
+    position: absolute;
+    top: 10.5px;
+    left: 1000.32px;
+    width: 593.18px;
+    height: 500px;
+    margin-top: -100px;
+    z-index: 1;
+}
+
+#svg-inferior{
+    position: absolute;
+    top: 651px;
+    left: 1px;
+    width: 1241px;
+    height: 590px;
+    margin-top: -100px;
+    z-index: 1;
+}
+
+#titulos{
+    line-height: 0.5
+}
+
+.botao-cadastro-texto {
+    width: 332px;
+    height: 75px;
+    font-size: 22px;
+    border-radius: 30px;
+    background-color: #EEAD2D;
+    color: black;
+    z-index: 5;
+    font-family: Inter;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.botao-cadastro-texto:hover {
+    transform: scale(1.05); 
+    background-color: #e0ab08; 
+}
+
+.values {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 50px 20px;
+    margin-top: 36px;
+    background-color: #f9f9f9;
+}
+
+.value-item {
+    background-color: #fff;
+    border-radius: 30px;
+    padding: 20px;
+    width: 316px;
+    height: 440px;
+    text-align: center;
+    box-shadow: -20px 20px 2px rgba(0,0,0,0.3);
+    z-index: 2;
+}
+
+.value-item img {
+    height: 100px;
+    width: 100px;
+    margin-bottom: 10px;
+    z-index: 5;
+}
+
+#primeiro{
+    border: solid 4px #FABC09 ;
+}
+#segundo{
+    border: solid 4px #ED1B24 ;
+}
+#terceiro{
+    border: solid 4px #244AA5 ;
+}
+.value-item h2 {
+    color: #3D3D3D;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.value-item p {
+    color: #555;
+    font-size: 26px;
+}
+
+/* Footer */
+footer {
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    text-align: center;
+}
+
+.footer-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 20px;
+    position: relative;
+}
+
+.footer-content > div {
+    flex: 1;
+    padding: 10px;
+    position: relative;
+}
+
+.footer-content > div:nth-child(1)::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    right: 0;
+    height: 80%;
+    width: 3px;
+    background-color: yellow;
+}
+
+.footer-content > div:nth-child(2)::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    right: 0;
+    height: 80%;
+    width: 3px;
+    background-color: blue;
+}
+
+.social-icons {
+width: 500px;
+margin-left: 6vh;
+justify-content: space-between;
+}
+
+.logo-footer img {
+    width: 255px;
+    height: 100px;
+}
+
+#p-geral {
+    color: red;
+}
+
+#p-curso {
+    font-size: 24px;
+}
+
+.p-descricao {
+    margin-top: 40px;
+    margin-bottom: 100px;
+}
+
+.footer-note {
+    margin-top: 20px;
+    color: #999;
+}
+
+.medal {
+    width: 20px;
+    height: 20px;
+}
+
+.gold-medal{
+    width: 35px; 
+    height: 35px; 
+}
+
+.silver-medal {
+    width: 35px; 
+    height: 35px; 
+}
+
+.bronze-medal {
+    width: 35px; 
+    height: 35px; 
+}
+
+/* Estilo dos títulos do footer */
+.contact h3,
+.social-media h3 {
+    color: #ED1B24; 
+    font-family: 'Share Tech', sans-serif;
+    font-size: 24px; 
+}
+
+
+.contact h3 {
+    color: #ED1B24; 
+    font-family: 'Share Tech', sans-serif; 
+    bottom: 10px;
+    position: relative;
+    font-size: 30px;
+}
+
+
+.social-media h3 {
+    color: #ED1B24;
+    font-family: 'Share Tech', sans-serif;
+    bottom: 10px;
+    position: relative;
+    font-size: 30px;
+}

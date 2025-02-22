@@ -1,0 +1,149 @@
+.espaço-notificacao-dropdown {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: auto;
+}
+
+.notificacao {
+    position: relative;
+    cursor: pointer;
+}
+
+.icone-notificacao {
+    width: 24px;
+    height: 24px;
+}
+
+.notificacao-dropdown {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    min-width: 250px; /* Ajustado para um tamanho fixo mais adequado */
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    overflow-y: auto;
+    max-height: 400px;
+    display: none;
+    z-index: 1000;
+    animation: slideDown 0.3s ease-in-out; /* Animação para abrir */
+}
+
+.notificacao-lista {
+    list-style: none;
+    width: 62vh;
+    margin: 0;
+    padding: 0;
+}
+
+.notificacao-lista li {
+    font-size: 14px;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px; /* Ajuste o valor conforme necessário */
+    border-bottom: 1px solid #ddd;
+}
+
+.notificacao-lista li:last-child {
+    border-bottom: none;
+}
+
+.notificacao-lista li span {
+    margin-right: 10px; /* Ajuste o valor conforme necessário */
+}
+
+.marcar-lida {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 3px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+    min-width: 70px;
+    text-align: center;
+}
+
+.notificacao-lista li.lida {
+    color: #999;
+    text-decoration: line-through;
+}
+
+.marcar-lida:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+    color: #666;
+}
+
+.notificacao-lista li .data-notificacao {
+    font-size: 12px;  /* Tamanho menor */
+    color: #aaa;      /* Cor mais clara */
+    margin-top: 5px;  /* Distância entre o botão e a data */
+}
+
+/* Animação de entrada */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.notificacao-dropdown.show {
+    display: block;
+    animation: slideDown 0.3s ease-in-out;
+}
+
+/* Animação de saída */
+@keyframes slideUp {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+.notificacao-dropdown.hide {
+    animation: slideUp 0.3s ease-in-out;
+}
+
+@keyframes shake {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(15deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(-15deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.icone-notificacao.shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+.contador-notificacoes {
+    position: absolute;
+    top: 1px; 
+    right: 1px; 
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+    visibility: hidden; 
+}
+
