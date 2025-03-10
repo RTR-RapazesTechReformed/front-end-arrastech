@@ -1,0 +1,1107 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&family=Share+Tech&family=VT323&display=swap");
+
+body {
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding-left: 10vh;
+  padding-right: 10vh;
+  background-color: #ffffff;
+}
+
+label {
+  margin-top: 0.5rem;
+  font-weight: bold;
+}
+
+header {
+  margin-top: 1vh;
+  background-color: #fff;
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid #2b5f9e;
+  /* Adiciona uma borda azul de 2px */
+  border-radius: 20px;
+}
+
+a {
+  text-decoration: none;
+  outline: none;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  /* Ajuste a largura máxima para centralizar o conteúdo */
+  margin: 0 auto;
+  /* Centraliza o conteúdo horizontalmente */
+  padding: 0 20px;
+  /* Adiciona um padding para espaçamento */
+  z-index: 2;
+}
+
+.drop_down {
+  position: relative;
+  /* Define o contêiner pai para o posicionamento absoluto do dropdown */
+  display: inline-block;
+  background-color: #f9f9f9;
+  /* Cor de fundo */
+  border: 3px solid #000000;
+  /* Borda */
+  border-radius: 10px;
+  /* Bordas arredondadas */
+  padding: 10px;
+  /* Espaçamento interno */
+  cursor: pointer;
+  /* Cursor de mão para indicar interatividade */
+  transition: background-color 0.3s;
+  /* Transição suave para cor de fundo */
+  z-index: 10;
+  /* Garante que o contêiner esteja acima do dropdown */
+}
+
+.container_nome_usuario {
+  display: flex;
+  align-items: center;
+  /* Alinha o texto verticalmente ao centro */
+  pointer-events: none;
+  gap: 10px;
+}
+
+.container_nome_usuario h1 {
+  font-size: 18px;
+  /* Tamanho da fonte */
+  color: #333;
+  /* Cor do texto */
+  margin: 0;
+  /* Remove margens */
+  padding-right: 10px;
+  /* Espaço entre o texto e a imagem */
+}
+
+.tracos_drop {
+  width: 20px;
+  /* Largura da imagem */
+  height: auto;
+  /* Altura automática para manter a proporção */
+  pointer-events: none;
+}
+
+.dropdown_content {
+  position: absolute;
+  /* Posiciona o dropdown em relação ao contêiner pai */
+  background-color: #f9f9f9;
+  /* Cor de fundo */
+  border: 3px solid #000000;
+  /* Borda */
+  border-top: none;
+  /* Remove a borda superior */
+  border-radius: 0 0 5px 5px;
+  /* Apenas as bordas inferiores serão arredondadas */
+  padding: 10px;
+  /* Espaçamento interno */
+  margin-top: 8px;
+  /* Espaço entre o dropdown e o conteúdo */
+  width: 100%;
+  /* Ajusta a largura do dropdown para o tamanho do contêiner pai */
+  max-height: 0;
+  /* Inicialmente com altura 0 */
+  overflow: hidden;
+  /* Esconde o conteúdo que ultrapassa o contêiner */
+  opacity: 0;
+  /* Inicialmente transparente */
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  /* Transições suaves */
+  z-index: 1;
+  /* Garante que o dropdown fique atrás do contêiner principal */
+  left: 0;
+  /* Alinha o dropdown com o início do contêiner pai */
+}
+
+/* Estilos para o dropdown */
+.dropdown_content a {
+  color: #333;
+  /* Cor do texto padrão */
+  padding: 8px 12px;
+  /* Espaçamento interno */
+  text-decoration: none;
+  /* Remove o sublinhado padrão dos links */
+  display: block;
+  /* Faz o link ocupar a largura toda */
+  background-color: #f9f9f9;
+  /* Cor de fundo do link */
+  transition: background-color 0.3s;
+  /* Transição suave para a cor de fundo */
+}
+
+/* Estilos para o link quando passar o mouse */
+.dropdown_content a:hover {
+  background-color: #e0e0e0;
+  /* Cor de fundo ao passar o mouse */
+  color: #333;
+  /* Garante que a cor do texto permaneça consistente */
+  text-decoration: none;
+  /* Garante que o sublinhado não apareça */
+}
+
+/* Opcional: Para remover o outline azul ao focar no link */
+.dropdown_content a:focus {
+  outline: none;
+  /* Remove o outline azul que aparece ao focar */
+}
+
+.show {
+  max-height: 300px;
+  /* Define a altura máxima do dropdown, ajuste conforme necessário */
+  opacity: 1;
+  /* Torna o conteúdo opaco */
+}
+
+.geral-container {
+  display: flex;
+  gap: 60px;
+  flex-direction: row;
+  
+}
+
+.notifications .bi,
+.menu .bi {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.user-profile img {
+  cursor: pointer;
+}
+
+.perfil-imagem {
+  border-radius: 50%;
+}
+
+.notifications-dropdown,
+.user-details {
+  top: 50px;
+  right: 0;
+  display: none;
+  z-index: 1;
+  width: 200px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+main {
+  padding: 20px;
+}
+
+.logo img {
+  width: 50%;
+  margin-left: 40px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.menu {
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.notifications,
+.user-profile {
+  position: relative;
+  cursor: pointer;
+}
+
+.notifications .bi,
+.menu .bi,
+.user-profile img {
+  width: 24px;
+  height: 24px;
+}
+
+.user-profile span {
+  font-size: 16px;
+  color: #333;
+  margin-left: 10px;
+}
+
+/* .notifications-dropdown, .user-details {
+    display: none;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 8px;
+    z-index: 1;
+    animation: fadeIn 0.3s ease-in-out;
+    width: 200px;
+} */
+
+.notifications-dropdown p,
+.user-details p {
+  margin: 0;
+  padding: 5px;
+}
+
+.user-details {
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-details img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.user-details span {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #333;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.main-content {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-direction: column;
+  height: fit-content;
+  gap: 16px;
+}
+
+.welcome-section {
+  background-size: cover;
+  color: #fff;
+  border-radius: 15px;
+  width: 100%;
+  height: 44vh;
+  position: relative;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+#img-welcome {
+  width: 100%;
+  height: 100%;
+}
+
+#img-vector2 {
+  position: absolute;
+
+  right: 5vh;
+  width: 46.5vh;
+}
+
+.welcome-text {
+  position: absolute;
+  top: 9%;
+  left: 21.2%;
+  transform: translate(-50%, -50%);
+  z-index: 99;
+}
+
+.welcome-text h1 {
+  display: inline-block;
+  margin: 0 auto;
+  z-index: 99;
+  font-size: 1.5rem;
+  background-color: #244aa5;
+}
+
+.welcome-section button {
+  margin-top: 10px;
+  margin-left: 10px;
+  padding: 10px 20px;
+  background-color: #ffc107;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  color: rgb(0, 0, 0);
+  width: 300px;
+  z-index: 99;
+}
+
+
+.course-section {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  align-items: flex-start;
+  text-align: left;
+  width: 88%;
+  height: auto;
+  min-height: 40vh;
+  border: 2px solid #244aa5;
+}
+
+.course-section h2 {
+  font-weight: bold;
+  margin: 0;
+  margin-bottom: 10px;
+  font-family: "Inter" sans-serif;
+}
+
+.course-section hr {
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 10px 0;
+}
+
+.course-section img {
+  margin-top: 30px;
+  width: 85px;
+}
+#nomeCurso {
+  max-width: 196px; /* Ajuste este valor conforme necessário */
+  white-space: nowrap; /* Não permite quebra de linha */
+  overflow: hidden; /* Oculta o texto que excede o limite */
+  text-overflow: ellipsis; /* Adiciona "..." ao final do texto que não cabe */
+}
+
+.course-info {
+  background-color: #244aa5;
+  border-radius: 20px;
+  margin-top: -35px;
+  width: 70%;
+  margin-left: 45px;
+  height: 7vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.course-info p {
+  margin: 0;
+  color: white;
+}
+
+.course-info2 {
+  background-color: #244aa5;
+  border-radius: 20px;
+  margin-top: 30px;
+  width: 100%;
+  margin-left: 0px;
+  height: 7vh;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#top-medalha {
+  display: block;
+  margin: 30px auto;
+}
+
+.course-info2 p {
+  margin: 0;
+  color: white;
+}
+
+.course-level {
+  font-weight: bold;
+}
+
+.gold-text {
+  background: linear-gradient(90deg, #ffd700, #ff8c00);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+
+.silver-text {
+  background: linear-gradient(90deg, #c0c0c0, #a0a0a0);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+
+.bronze-text {
+  background: linear-gradient(90deg, #cd7f32, #b87333);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+
+.stats-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  height: 32vh;
+}
+
+.stat-item {
+  background-color: #fff;
+  padding: 16px;
+  border-radius: 15px;
+  text-align: center;
+  border: 2px solid #244aa5;
+  width: 50vh;
+  height: 33vh;
+  flex: 1;
+  margin: 0 10px;
+}
+
+#medalha-curso {
+  width: 100px;
+  height: 100px;
+}
+
+.stat-item p {
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+#kpi-titulo {
+  font-size: 24px;
+}
+
+.stat-item img {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100px;
+  height: 100px;
+}
+
+.stat-value {
+  font-size: 44px;
+  font-weight: bolder;
+  text-align: center;
+  line-height: 100px;
+  height: 100px;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+.last-week {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.course-select select {
+  border-radius: 20px;
+  border: 1px solid #244aa5;
+  height: 40px;
+}
+
+.total-left {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  height: auto;
+  padding-top: 4vh;
+}
+
+.total-right {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  padding: 3.4vh 2vh;
+  gap: 24px;
+  width: 23%;
+}
+
+.div-welcome {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-direction: column;
+}
+
+.dash-atual {
+  width: 53vh;
+  padding: 5px;
+}
+
+#kpiClassificacao {
+  height: 51vh;
+  margin-bottom: 10px;
+}
+
+#CardClassificacao {
+  height: 100%;
+}
+
+.longo-do-tempo {
+  background-color: #244aa5;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+  width: 100%;
+  height: fit-content;
+}
+
+.longo-do-tempo h3,
+.cada-curso h3 {
+  margin-top: 0;
+  color: white;
+}
+
+.dash-longoDoTempo,
+.dash-pontosCadaCurso {
+  background-color: white;
+  height: 46vh;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+#pontosLinhaChart {
+  height: fit-content;
+}
+
+.cada-curso {
+  background-color: #244aa5;
+  height: fit-content;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1.5rem;
+  padding: 24px;
+}
+
+.cada-curso h3 {
+  color: white;
+}
+
+.dash-pontosCadaCurso {
+  background-color: white;
+  height: 58vh;
+  width: 97%;
+  border-radius: 20px;
+}
+
+.porcentagem-estudo {
+  margin-top: 20px;
+}
+
+.dias-semana {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  background-image: url(..//imgs/imagemDiasDaSemana.JPG);
+  height: 14vh;
+  width: 97%;
+}
+
+.course-section-2 {
+  background-color: #244aa5;
+  color: white;
+  padding: 32px;
+  border-radius: 20px;
+  align-items: center;
+  text-align: center;
+  width: 47vh;
+  height: 45vh;
+  margin-right: 40px;
+  border: 2px solid #244aa5;
+}
+
+.course-section-3 {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 20px;
+  align-items: center;
+  text-align: center;
+  width: fit-content;
+  height: 72vh;
+  border: 2px solid #244aa5;
+  padding: 25px;
+  height: auto;
+  min-height: 60vh
+}
+
+.course-section-3 h2 {
+  font-weight: bold;
+  margin: 0;
+  margin-bottom: 10px;
+  font-family: "Inter" sans-serif;
+}
+
+.course-section-3 hr {
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 10px 0;
+}
+
+.modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.container {
+  padding: 15px;
+  border-radius: 10px;
+  width: 300px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  background-color: #fff;
+}
+
+.progresso-aluno {
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 10px 0;
+  padding: 20px;
+  text-align: left;
+}
+
+.days {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+  gap: 10px;
+}
+
+.day {
+  width: 40px;
+  /* Tamanho das bolinhas */
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eead2d;
+  color: #fff;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  margin: 5px;
+}
+
+.day.active {
+  background-color: #f7b700;
+}
+
+.total-container {
+  display: flex;
+  flex-direction: column;
+  padding-left: 2px;
+}
+
+.desempenho-habilidades {
+  background-color: #244aa5;
+
+  height: 70vh;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.dash-habilidades {
+  background-color: white;
+  height: 60vh;
+  width: 90%;
+  border-radius: 30px;
+}
+
+.desempenho-habilidades h3 {
+  color: white;
+}
+
+/* Footer */
+footer {
+  background-color: #fff;
+  padding: 20px;
+  border-top: 1px solid #ddd;
+  text-align: center;
+}
+
+.footer-content {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 20px;
+  position: relative;
+}
+
+.footer-content>div {
+  flex: 1;
+  padding: 10px;
+  position: relative;
+}
+
+.footer-content>div:nth-child(1)::after {
+  content: "";
+  position: absolute;
+  top: 10%;
+  right: 0;
+  height: 80%;
+  width: 3px;
+  background-color: yellow;
+}
+
+.footer-content>div:nth-child(2)::after {
+  content: "";
+  position: absolute;
+  top: 10%;
+  right: 0;
+  height: 80%;
+  width: 3px;
+  background-color: blue;
+}
+
+.logo-footer img {
+  width: 255px;
+  height: 100px;
+}
+
+#p-geral {
+  color: red;
+}
+
+#p-curso {
+  font-size: 24px;
+}
+
+.p-descricao {
+  margin-top: 40px;
+  margin-bottom: 100px;
+}
+
+.footer-note {
+  margin-top: 20px;
+  color: #999;
+}
+
+.medal {
+  width: 20px;
+  height: 20px;
+}
+
+.gold-medal {
+  width: 40px;
+  height: 40px;
+}
+
+.silver-medal {
+  width: 40px;
+  height: 40px;
+}
+
+.bronze-medal {
+  width: 40px;
+  height: 40px;
+}
+
+/* Estilo dos títulos do footer */
+.contact h3,
+.social-media h3 {
+  color: #ed1b24;
+  font-family: "Share Tech", sans-serif;
+  font-size: 24px;
+}
+
+.contact h3 {
+  color: #ed1b24;
+  font-family: "Share Tech", sans-serif;
+  bottom: 10px;
+  position: relative;
+  font-size: 30px;
+}
+
+.social-media h3 {
+  color: #ed1b24;
+  font-family: "Share Tech", sans-serif;
+  bottom: 10px;
+  position: relative;
+  font-size: 30px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  overflow: auto;
+}
+
+/* Estilo para o conteúdo do modal */
+.modal-content {
+  top: 3%;
+  left: 25%;
+  background-color: #ffffff;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s;
+  width: 100px;
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Estilo para o botão de fechar */
+.close {
+  color: #555;
+  align-self: flex-end;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal button {
+  text-align: center;
+  background-color: #244aa5;
+  color: whitesmoke;
+  padding: 0.8rem;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  min-width: 9.8rem;
+}
+
+.modal button:hover {
+  background-color: #04153c;
+}
+
+.edit-goal {
+  color: whitesmoke;
+  background-color: #244aa5;
+  margin-top: 2px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.edit-goal:hover {
+  background-color: #04153c;
+}
+
+/* Estilo dos inputs */
+input[type="number"] {
+  width: 98%;
+  padding: 0.55rem;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Animação de fadeIn */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.day-inputs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+}
+
+.total-modal {
+  padding: 1rem;
+}
+
+.modal-content h4 {
+  margin: 0;
+}
+
+.single {
+  width: 100%;
+}
+
+.bold-atual {
+  font-weight: bold;
+}
+
+.progress-bar {
+  background-color: #ffffff;
+}
+
+.progress-bar.meta-atingida {
+  background-color: #007bff;
+}
+
+.progress-bar.meta-nao-atingida {
+  background-color: red;
+}
+
+.progress-bar.meta-ultrapassada {
+  background-color: #f7b700;
+}
+
+.table-responsive {
+  max-width: 900px;
+  background-color: rgba(255, 255, 255, 0.9); 
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  margin-left: 1%;
+  margin-top: 10%;
+  padding: 20px;
+}
+
+/* Estilos da tabela interna */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+.table th,
+.table td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.table th {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f9f9f9;
+}
+
+.table-striped tbody tr:hover {
+  background-color: #e9ecef;
+}
+
+@media (max-width: 768px) {
+
+  .table th,
+  .table td {
+    padding: 8px 10px;
+  }
+}
+
+
+.dash-atual {
+  font-family: Arial, sans-serif;
+}
+
+.course-section {
+  padding: 20px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.date-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.date-filter label {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.date-filter input {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  max-width: 250px;
+}
+
+#apply-filter {
+  padding: 8px 12px;
+  background-color: #244aa5;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#apply-filter:hover {
+  background-color: #2a5bcd;
+}
+
+.date-info {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #333;
+}
+
+#pontos-semana-change img {
+  width: 100px; 
+  position: absolute;
+  height: auto; 
+  vertical-align: middle; 
+  margin-left: 5vh;
+}

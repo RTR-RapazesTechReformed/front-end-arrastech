@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Tech Jobs</title>
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="icon" type="image/x-icon" href="../imgs/logo-arrastao.png">
+</head>
+<body>
+           <!-- Container do VLibras Widget -->
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+    <header>
+        <div class="header-content">
+            <img src="../imgs/logo_arrastao.png" alt="logo arrastão com o nome tech jobs" class="logo-header">
+            <div class="login-buttons">
+                <a href="login.html"><button class="login-btn">ENTRAR</button></a>
+                <button  onclick="window.location.href = 'cadastro.html'" class="register-btn">CADASTRE-SE GRATUITAMENTE</button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="intro-container">
+            <div class="intro-text">
+                <p id="titulos" style="color: #244AA5;">Alunos <span style="color: #244AA5;">monitoram</span> e </p>
+                <p id="titulos" style="color: #ED1B24;">Empresas contratam</p>
+                <p id="titulos">Conecte-se e cresça conosco!</p>
+                <p id="texto">Conecte-se e cresça conosco! Uma plataforma personalizada, baseada em dados,
+                onde alunos acompanham seu desempenho e empresas encontram candidatos ideais para suas vagas. 
+                Faça parte dessa família!</p>
+                <button onclick="window.location.href = 'cadastro.html'" class="botao-cadastro-texto">Cadastre-se agora mesmo -></button>
+            </div>
+            <img src="../imgs/grafico.png" alt="Intro Image" class="grafico-img">
+        </div>
+        <img id="svg-superior2" src="../imgs/svgSuperior2.svg">
+        <img id="svg-superior" src="../imgs/efeitoSuperior.svg">
+        <section class="values">
+            <img id="svg-inferior" src="../imgs/efeitoInferior.svg">
+            <div id="primeiro" class="value-item">
+                <img src="../imgs/compromisso.png" alt="Compromisso">
+                <h2>“Compromisso”</h2>
+                <p>Nosso compromisso é com a excelência, buscando sempre superar as expectativas dos nossos clientes e parceiros.</p>
+            </div>
+            <div id="segundo" class="value-item">
+                <img src="../imgs/humanizacao.png" alt="Humanização">
+                <h2>“Humanização”</h2>
+                <p>Valorizamos a humanização em tudo o que fazemos, priorizando o cuidado, a empatia e o respeito por todos.</p>
+            </div>
+            <div id="terceiro" class="value-item">
+                <img src="../imgs/inovacao.png" alt="Inovação">
+                <h2>“Inovação”</h2>
+                <p>Somos uma empresa comprometida com a inovação, constantemente buscando novas soluções e abordagens criativas.</p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="logo-footer">
+                <img src="../imgs/logo-techJobs.JPG" alt="logo arrastão com o nome tech jobs">
+            </div>
+            <div class="contact">
+                <h3 id="titulo-contact">Contato</h3>
+                <p>Email: <a href="mailto:tech.for.all.0824@gmail.com">tech.for.all.0824@gmail.com</a></p>
+                <p>Email: <a href="mailto:arrastao@arrastao.org.br">arrastao@arrastao.org.br</a></p>
+                <p>Telefone: <a href="tel:+551158433366">(11) 5843-3366</a></p>
+            </div>
+            <div class="social-media">
+                <h3>Redes Sociais</h3>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/company/projetoarrastao/?originalSubdomain=br" target="_blank">
+                        <img src="../imgs/linkedin.svg" alt="LinkedIn">
+                    </a>
+                    <a href="https://www.instagram.com/projetoarrastao/" target="_blank">
+                        <img src="../imgs/insta.svg" alt="Instagram">
+                    </a>
+                    <a href="https://www.facebook.com/ProjetoArrastao/?locale=pt_BR" target="_blank">
+                        <img src="../imgs/face.svg" alt="Facebook">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <p class="footer-note">© 2024 Todos os direitos reservados</p>
+    </footer>
+</body>
+
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+  new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script> 
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../css/loginv2.css">
+    <link rel="icon" type="image/x-icon" href="../imgs/logo-arrastao.png">
+</head>
+<body>
+
+    <!-- Container do VLibras Widget -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+          <div class="vw-plugin-top-wrapper"></div>
+        </div>
+      </div>
+<div id="alertDiv" class="container_alerta d-none">
+    <span class="titulo_alerta">Alerta</span>
+    <span class="texto_alerta">Mensagem de alerta aqui!</span>
+</div>    
+
+
+
+    <div class="logo-container">
+        <img src="../imgs/logo_arrastao.png" alt="Logo" class="logo">
+    </div>
+        
+       
+        <div class="container-principal">
+       
+            <div class="login-section2">
+
+            <h2 class="main-title">Entre Aqui!</h2>
+            <p class="subtitle">Pronto para continuar mudando vidas?</p>
+            <h3 class="login-prompt">Faça Login agora!</h3>
+            <form>
+                <div class="input-group">
+                    <label for="inputEmail">Email</label>
+                    <input type="email" class="form-control" id="inputEmail" required>
+                </div>
+                <div class="input-group">
+                    <label for="inputSenha">Senha</label>
+                    <input type="password" class="form-control" id="inputSenha" required>
+                </div>
+                <div class="options">
+                    <label><input type="checkbox" class="form-check-input" id="conectado"> Lembrar-me</label>
+                    <a href="esqueci_senha.html"><span id="esqueciSenha" onclick="esqueciSenha()" style="text-decoration: underline;">Esqueci minha senha</span></a>
+                </div>
+                <div class="button-group">
+                    <button onclick="window.location.href = 'home.html'" type="button" class="back-btn">Voltar ao Menu</button>
+                    <button type="button" onclick="realizarLogin()" class="login-btn">Entrar</button>
+                </div>
+            </form>
+            <p onclick="window.location.href = 'cadastro.html'" class="register-link">Não tem uma conta? <a href="#" style="text-decoration: underline;">Cadastre-se</a></p>
+        </div>
+
+    </div>
+
+    <script src="../js/login.js"></script>
+  
+</body>
+
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+  new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script> 
+
+</html>

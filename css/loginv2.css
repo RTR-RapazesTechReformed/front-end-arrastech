@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&family=Share+Tech&family=VT323&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Inter, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../imgs/fundoArrastao.png') no-repeat center center fixed;
+    background-size: cover;
+    filter: blur(4px);
+    z-index: -1;
+}
+
+.logo-container {
+    width: 35vh;
+    height: 7.5vh; 
+    background-color: rgb(222, 222, 222); /* Fundo com a cor #244AA5 e transparência */
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-left: 2px solid black;  
+    border-right: 2px solid black; 
+    border-top: 2px solid black;   
+    border-bottom: none;           
+    padding: 8px;
+    backdrop-filter: blur(10px); /* Desfoque no fundo */
+}
+
+img.logo{
+    margin-left: 18%;
+}
+
+.logo {
+    max-width: 150px; 
+}
+
+.container {
+    display: flex;
+    width: 75%;
+    height: 80%; 
+    background-color: #244AA5;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.container-principal {
+    display: flex;
+    background-color: rgba(36, 74, 165, 0.6); /* Fundo com a cor #244AA5 e transparência */
+    backdrop-filter: blur(10px); /* Desfoque no fundo */
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 75%;
+    border-radius: 30px;
+    border: 2px solid black;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.login-section {
+    padding: 40px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-section2 {
+    padding: 40px;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #ffffff;
+}
+
+.main-title {
+    font-size: 2.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.subtitle {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.login-prompt {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1em;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9em;
+}
+
+.options a {
+    color: white;
+    text-decoration: none;
+}
+
+.options a:hover {
+    text-decoration: underline;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.back-btn {
+    width: 200px;
+    height: 50px;
+    background-color: #FABC09;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    border-radius: 10px;
+    color: black;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.back-btn:hover {
+    background-color: #a37b01;
+}
+
+.login-btn {
+    width: 200px;
+    height: 50px;
+    background-color: #FABC09;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    border-radius: 10px;
+    color: black;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.login-btn:hover {
+    background-color: #a37b01;
+}
+
+.register-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.register-link a {
+    color: white;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+.image-section {
+    width: 50%;
+    background-color: #244AA5;
+    padding-top: 8vh;
+    padding-bottom: 10vh;
+    padding-right: 8vh;
+}
+
+
+/* Estilos para o contêiner do alerta */
+.container_alerta {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50; /* Cor padrão para sucesso */
+    color: white;
+    padding: 15px 30px;
+    border-radius: 5px;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, top 0.5s ease-in-out;
+    width: 300px; /* Largura do alerta */
+    text-align: center; /* Centraliza o texto */
+    display: none; /* Inicialmente oculto */
+}
+
+/* Estilos para o alerta quando exibido */
+.container_alerta.fade-in {
+    opacity: 1;
+    top: 40px; /* Movimenta o alerta um pouco para baixo */
+}
+
+/* Estilos para o alerta quando escondido */
+.container_alerta.fade-out {
+    opacity: 0;
+}
+
+/* Estilos para um alerta de erro */
+.container_alerta.alert-error {
+    background-color: #f44336; /* Cor de fundo para erro */
+}
+
+/* Estilos para um alerta de sucesso */
+.container_alerta.alert-success {
+    background-color: #4CAF50; /* Cor de fundo para sucesso */
+}

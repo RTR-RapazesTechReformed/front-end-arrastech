@@ -12,9 +12,6 @@ COPY imgs /usr/share/nginx/html/imgs
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-ARG BACKEND_URL
-RUN envsubst '${BACKEND_URL}' < /usr/share/nginx/html/js/backendUrl.template.js > /usr/share/nginx/html/js/backendUrl.js
-
 EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]
