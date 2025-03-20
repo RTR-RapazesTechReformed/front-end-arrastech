@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   if (user && user.idUsuario) {
     try {
       const response = await fetch(
-        `http://localhost:8080/usuarios/imagem/${user.idUsuario}`
+        `/usuarios/imagem/${user.idUsuario}`
       );
       if (response.ok) {
         const imageData = await response.blob();
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   try {
     const response = await fetch(
-      `http://localhost:8080/usuarios/buscar/${user.idUsuario}`
+      `/usuarios/buscar/${user.idUsuario}`
     );
     if (!response.ok) {
       throw new Error("Erro ao buscar os dados do usuário");
@@ -93,7 +93,7 @@ document
 
       try {
         const response = await fetch(
-          `http://localhost:8080/usuarios/atualizar-imagem/${user.idUsuario}`,
+          `/usuarios/atualizar-imagem/${user.idUsuario}`,
           {
             method: "PATCH",
             body: file,
@@ -133,7 +133,7 @@ document
 
     try {
       const response = await fetch(
-        `http://localhost:8080/usuarios/atualizar/${user.idUsuario}`,
+        `/usuarios/atualizar/${user.idUsuario}`,
         {
           method: "PATCH",
           headers: {
@@ -175,7 +175,7 @@ document
       return;
     }
     try {
-      const response = await fetch("http://localhost:8080/usuarios/deletar", {
+      const response = await fetch("/usuarios/deletar", {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

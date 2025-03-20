@@ -45,7 +45,7 @@ async function carregarCategorias() {
     loader.style.display = 'flex';
 
     try {
-        const response = await fetch('http://localhost:8080/dashboardRecrutador/listar');
+        const response = await fetch('/dashboardRecrutador/listar');
         const data = await response.json();
 
         const categoriasSet = new Set();
@@ -87,7 +87,7 @@ async function exibirCursosPorCategoria() {
     }
 
     try {
-        const response = await fetch(`http://localhost:8080/dashboardRecrutador/listar?categoria=${categoria}`);
+        const response = await fetch(`/dashboardRecrutador/listar?categoria=${categoria}`);
         const data = await response.json();
 
         const containerCursos = document.getElementById('cursos_container');
@@ -131,25 +131,25 @@ async function exibirAlunosDoCurso(curso) {
     
     loader.style.display = 'flex';
     try {
-        const alunosResponse = await fetch(`http://localhost:8080/pontuacoes/alunos`);
+        const alunosResponse = await fetch(`/pontuacoes/alunos`);
         const dadosAlunos = await alunosResponse.json();
         const alunosCurso = dadosAlunos[curso.id]?.ranking || [];
 
         const idUsuarioLogado = getIdUsuarioLogado();
 
-        const interessadosResponse = await fetch(`http://localhost:8080/dashboardRecrutador/${idUsuarioLogado}/listar/interessados`);
+        const interessadosResponse = await fetch(`/dashboardRecrutador/${idUsuarioLogado}/listar/interessados`);
         const interessadosData = await interessadosResponse.json();
         const idsInteressados = interessadosData.map(aluno => aluno.id);
 
-        const processoSeletivoResponse = await fetch(`http://localhost:8080/dashboardRecrutador/${idUsuarioLogado}/listar/processoSeletivo`);
+        const processoSeletivoResponse = await fetch(`/dashboardRecrutador/${idUsuarioLogado}/listar/processoSeletivo`);
         const processoSeletivoData = await processoSeletivoResponse.json();
         const idsProcessoSeletivo = processoSeletivoData.map(aluno => aluno.id);
 
-        const contratadosResponse = await fetch(`http://localhost:8080/dashboardRecrutador/${idUsuarioLogado}/listar/contratados`);
+        const contratadosResponse = await fetch(`/dashboardRecrutador/${idUsuarioLogado}/listar/contratados`);
         const contratadosData = await contratadosResponse.json();
         const idsContratados = contratadosData.map(aluno => aluno.id);
 
-        const favoritosResponse = await fetch(`http://localhost:8080/dashboardRecrutador/${idUsuarioLogado}/listar/favoritos`);
+        const favoritosResponse = await fetch(`/dashboardRecrutador/${idUsuarioLogado}/listar/favoritos`);
         const favoritosData = await favoritosResponse.json();
         const idsFavoritos = favoritosData.map(aluno => aluno.id);
 
@@ -231,23 +231,23 @@ async function atualizarAlunos() {
     try {
         const idUsuarioLogado = getIdUsuarioLogado();
 
-        const interessadosResponse = await fetch(`http://localhost:8080/dashboardRecrutador/${idUsuarioLogado}/listar/interessados`);
+        const interessadosResponse = await fetch(`/dashboardRecrutador/${idUsuarioLogado}/listar/interessados`);
         const interessadosData = await interessadosResponse.json();
         const idsInteressados = interessadosData.map(aluno => aluno.id);
 
-        const processoSeletivoResponse = await fetch(`http://localhost:8080/dashboardRecrutador/${idUsuarioLogado}/listar/processoSeletivo`);
+        const processoSeletivoResponse = await fetch(`/dashboardRecrutador/${idUsuarioLogado}/listar/processoSeletivo`);
         const processoSeletivoData = await processoSeletivoResponse.json();
         const idsProcessoSeletivo = processoSeletivoData.map(aluno => aluno.id);
 
-        const contratadosResponse = await fetch(`http://localhost:8080/dashboardRecrutador/${idUsuarioLogado}/listar/contratados`);
+        const contratadosResponse = await fetch(`/dashboardRecrutador/${idUsuarioLogado}/listar/contratados`);
         const contratadosData = await contratadosResponse.json();
         const idsContratados = contratadosData.map(aluno => aluno.id);
 
-        const favoritosResponse = await fetch(`http://localhost:8080/dashboardRecrutador/${idUsuarioLogado}/listar/favoritos`);
+        const favoritosResponse = await fetch(`/dashboardRecrutador/${idUsuarioLogado}/listar/favoritos`);
         const favoritosData = await favoritosResponse.json();
         const idsFavoritos = favoritosData.map(aluno => aluno.id);
 
-        const cursosResponse = await fetch('http://localhost:8080/pontuacoes/alunos');
+        const cursosResponse = await fetch('/pontuacoes/alunos');
         const data = await cursosResponse.json();
 
         const containerCursos = document.getElementById('cursos_container');
@@ -412,7 +412,7 @@ async function verMais(alunoId) {
     try {
         const idUsuarioLogado = getIdUsuarioLogado();
 
-        const response = await fetch(`http://localhost:8080/usuarios/buscar/${alunoId}`);
+        const response = await fetch(`/usuarios/buscar/${alunoId}`);
         const aluno = await response.json();
 
         const nomeAluno = `${aluno.primeiroNome} ${aluno.sobrenome}`;
@@ -426,7 +426,7 @@ async function verMais(alunoId) {
         document.getElementById('descricao_do_aluno').innerText = aluno.descricao;
 
         const imgElement = document.querySelector('.bloco_foto_aluno img');
-        const fotoResponse = await fetch(`http://localhost:8080/usuarios/imagem/${alunoId}`);
+        const fotoResponse = await fetch(`/usuarios/imagem/${alunoId}`);
         if (fotoResponse.ok) {
             const blob = await fotoResponse.blob();
             const fotoUrl = URL.createObjectURL(blob);
@@ -435,7 +435,7 @@ async function verMais(alunoId) {
             imgElement.src = '/imgs/foto_padrao.png';
         }
 
-        const emblemasResponse = await fetch(`http://localhost:8080/pontuacoes/pontos-totais/${alunoId}`);
+        const emblemasResponse = await fetch(`/pontuacoes/pontos-totais/${alunoId}`);
         const emblemasData = await emblemasResponse.json();
 
         const emblemasContainer = document.querySelector('.container_emblemas');
@@ -469,7 +469,7 @@ async function verMais(alunoId) {
             <span>Email: <span id="email_do_aluno">${aluno.email}</span></span>
         `;
 
-        const favoritosResponse = await fetch(`http://localhost:8080/dashboardRecrutador/${idUsuarioLogado}/listar/favoritos`);
+        const favoritosResponse = await fetch(`/dashboardRecrutador/${idUsuarioLogado}/listar/favoritos`);
         const favoritosData = await favoritosResponse.json();
 
         const favoritarButton = document.createElement('button');
@@ -510,7 +510,7 @@ async function favoritar(alunoId, favoritarButton) {
     loader.style.display = 'flex';
     const idUsuarioLogado = getIdUsuarioLogado();
     try {
-        const response = await fetch(`http://localhost:8080/dashboardRecrutador/${idUsuarioLogado}/favoritos/${alunoId}`, {
+        const response = await fetch(`/dashboardRecrutador/${idUsuarioLogado}/favoritos/${alunoId}`, {
             method: 'POST'
         });
 
@@ -541,7 +541,7 @@ async function desfavoritar(alunoId, favoritarButton) {
     loader.style.display = 'flex';
     const idUsuarioLogado = getIdUsuarioLogado();
     try {
-        const response = await fetch(`http://localhost:8080/dashboardRecrutador/${idUsuarioLogado}/favoritos/${alunoId}`, {
+        const response = await fetch(`/dashboardRecrutador/${idUsuarioLogado}/favoritos/${alunoId}`, {
             method: 'DELETE'
         });
 
@@ -608,7 +608,7 @@ async function tenhoInteresse(alunoId, interesseButton, nomeAluno) {
     loader.style.display = 'flex';
 
     try {
-        const response = await fetch(`http://localhost:8080/dashboardRecrutador/${idUsuarioLogado}/interessados/${alunoId}`, {
+        const response = await fetch(`/dashboardRecrutador/${idUsuarioLogado}/interessados/${alunoId}`, {
             method: 'POST'
         });
 
@@ -646,7 +646,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     
     loader.style.display = 'flex';
     try {
-        const response = await fetch('http://localhost:8080/usuarios/listar');
+        const response = await fetch('/usuarios/listar');
         const data = await response.json();
 
         const municipioSelect = document.getElementById('municipio');
@@ -689,12 +689,12 @@ async function exibirAlunosPorCidade(cidadeSelecionada) {
     loader.style.display = 'flex';
     try {
         const [pontuacoesResponse, usuariosResponse, interessadosResponse, contratadosResponse, processoSeletivoResponse, favoritosResponse] = await Promise.all([
-            fetch(`http://localhost:8080/pontuacoes/ranking`),
-            fetch('http://localhost:8080/usuarios/listar'),
-            fetch(`http://localhost:8080/dashboardRecrutador/${getIdUsuarioLogado()}/listar/interessados`),
-            fetch(`http://localhost:8080/dashboardRecrutador/${getIdUsuarioLogado()}/listar/contratados`),
-            fetch(`http://localhost:8080/dashboardRecrutador/${getIdUsuarioLogado()}/listar/processoSeletivo`),
-            fetch(`http://localhost:8080/dashboardRecrutador/${getIdUsuarioLogado()}/listar/favoritos`)
+            fetch(`/pontuacoes/ranking`),
+            fetch('/usuarios/listar'),
+            fetch(`/dashboardRecrutador/${getIdUsuarioLogado()}/listar/interessados`),
+            fetch(`/dashboardRecrutador/${getIdUsuarioLogado()}/listar/contratados`),
+            fetch(`/dashboardRecrutador/${getIdUsuarioLogado()}/listar/processoSeletivo`),
+            fetch(`/dashboardRecrutador/${getIdUsuarioLogado()}/listar/favoritos`)
         ]);
 
         const [pontuacoesData, usuariosData, interessadosData, contratadosData, processoSeletivoData, favoritosData] = await Promise.all([
@@ -823,7 +823,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     
     loader.style.display = 'flex';
     try {
-        const response = await fetch('http://localhost:8080/usuarios/listar');
+        const response = await fetch('/usuarios/listar');
         const data = await response.json();
 
         const escolaridadeSelect = document.getElementById('escolaridade');
@@ -876,24 +876,24 @@ async function exibirAlunosPorEscolaridade(escolaridadeSelecionada) {
         containerCursos.style.alignItems = '';
         containerCursos.style.height = '';
 
-        const pontuacoesResponse = await fetch(`http://localhost:8080/pontuacoes/ranking`);
+        const pontuacoesResponse = await fetch(`/pontuacoes/ranking`);
         const pontuacoesData = await pontuacoesResponse.json();
 
-        const usuariosResponse = await fetch('http://localhost:8080/usuarios/listar');
+        const usuariosResponse = await fetch('/usuarios/listar');
         const usuariosData = await usuariosResponse.json();
 
-        const favoritosResponse = await fetch(`http://localhost:8080/dashboardRecrutador/${getIdUsuarioLogado()}/listar/favoritos`);
+        const favoritosResponse = await fetch(`/dashboardRecrutador/${getIdUsuarioLogado()}/listar/favoritos`);
         const favoritosData = await favoritosResponse.json();
 
         const favoritosSet = Array.isArray(favoritosData) ? new Set(favoritosData.map(aluno => aluno.id)) : new Set();
 
-        const contratadosResponse = await fetch(`http://localhost:8080/dashboardRecrutador/${getIdUsuarioLogado()}/listar/contratados`);
+        const contratadosResponse = await fetch(`/dashboardRecrutador/${getIdUsuarioLogado()}/listar/contratados`);
         const contratadosData = await contratadosResponse.json();
 
-        const interessadosResponse = await fetch(`http://localhost:8080/dashboardRecrutador/${getIdUsuarioLogado()}/listar/interessados`);
+        const interessadosResponse = await fetch(`/dashboardRecrutador/${getIdUsuarioLogado()}/listar/interessados`);
         const interessadosData = await interessadosResponse.json();
 
-        const processoSeletivoResponse = await fetch(`http://localhost:8080/dashboardRecrutador/${getIdUsuarioLogado()}/listar/processoSeletivo`);
+        const processoSeletivoResponse = await fetch(`/dashboardRecrutador/${getIdUsuarioLogado()}/listar/processoSeletivo`);
         const processoSeletivoData = await processoSeletivoResponse.json();
 
         const contratadosSet = new Set(contratadosData.map(aluno => aluno.id));
@@ -1025,17 +1025,17 @@ async function exibirAlunosPorNome(nomeBuscado) {
     
     loader.style.display = 'flex';
     try {
-        const pontuacoesResponse = await fetch(`http://localhost:8080/pontuacoes/ranking`);
+        const pontuacoesResponse = await fetch(`/pontuacoes/ranking`);
         const pontuacoesData = await pontuacoesResponse.json();
-        const usuariosResponse = await fetch('http://localhost:8080/usuarios/listar');
+        const usuariosResponse = await fetch('/usuarios/listar');
         const usuariosData = await usuariosResponse.json();
-        const interessadosResponse = await fetch(`http://localhost:8080/dashboardRecrutador/${getIdUsuarioLogado()}/listar/interessados`);
+        const interessadosResponse = await fetch(`/dashboardRecrutador/${getIdUsuarioLogado()}/listar/interessados`);
         const interessadosData = await interessadosResponse.json();
-        const contratadosResponse = await fetch(`http://localhost:8080/dashboardRecrutador/${getIdUsuarioLogado()}/listar/contratados`);
+        const contratadosResponse = await fetch(`/dashboardRecrutador/${getIdUsuarioLogado()}/listar/contratados`);
         const contratadosData = await contratadosResponse.json();
-        const processoSeletivoResponse = await fetch(`http://localhost:8080/dashboardRecrutador/${getIdUsuarioLogado()}/listar/processoSeletivo`);
+        const processoSeletivoResponse = await fetch(`/dashboardRecrutador/${getIdUsuarioLogado()}/listar/processoSeletivo`);
         const processoSeletivoData = await processoSeletivoResponse.json();
-        const favoritosResponse = await fetch(`http://localhost:8080/dashboardRecrutador/${getIdUsuarioLogado()}/listar/favoritos`);
+        const favoritosResponse = await fetch(`/dashboardRecrutador/${getIdUsuarioLogado()}/listar/favoritos`);
         const favoritosData = await favoritosResponse.json();
         const favoritosSet = new Set(favoritosData.map(favorito => favorito.id));
         const containerCursos = document.getElementById('cursos_container');
@@ -1154,17 +1154,17 @@ async function exibirAlunosPorEtnia(etniaSelecionada) {
     loader.style.display = 'flex';
 
     try {
-        const pontuacoesResponse = await fetch(`http://localhost:8080/pontuacoes/ranking`);
+        const pontuacoesResponse = await fetch(`/pontuacoes/ranking`);
         const pontuacoesData = await pontuacoesResponse.json();
-        const usuariosResponse = await fetch('http://localhost:8080/usuarios/listar');
+        const usuariosResponse = await fetch('/usuarios/listar');
         const usuariosData = await usuariosResponse.json();
-        const contratadosResponse = await fetch(`http://localhost:8080/dashboardRecrutador/${getIdUsuarioLogado()}/listar/contratados`);
+        const contratadosResponse = await fetch(`/dashboardRecrutador/${getIdUsuarioLogado()}/listar/contratados`);
         const contratadosData = await contratadosResponse.json();
-        const interessadosResponse = await fetch(`http://localhost:8080/dashboardRecrutador/${getIdUsuarioLogado()}/listar/interessados`);
+        const interessadosResponse = await fetch(`/dashboardRecrutador/${getIdUsuarioLogado()}/listar/interessados`);
         const interessadosData = await interessadosResponse.json();
-        const processoSeletivoResponse = await fetch(`http://localhost:8080/dashboardRecrutador/${getIdUsuarioLogado()}/listar/processoSeletivo`);
+        const processoSeletivoResponse = await fetch(`/dashboardRecrutador/${getIdUsuarioLogado()}/listar/processoSeletivo`);
         const processoSeletivoData = await processoSeletivoResponse.json();
-        const favoritosResponse = await fetch(`http://localhost:8080/dashboardRecrutador/${getIdUsuarioLogado()}/listar/favoritos`);
+        const favoritosResponse = await fetch(`/dashboardRecrutador/${getIdUsuarioLogado()}/listar/favoritos`);
         const favoritosData = await favoritosResponse.json();
         const containerCursos = document.getElementById('cursos_container');
         containerCursos.innerHTML = '';
@@ -1295,17 +1295,17 @@ async function exibirAlunosPorSexo(sexoSelecionado) {
     loader.style.display = 'flex';
 
     try {
-        const pontuacoesResponse = await fetch(`http://localhost:8080/pontuacoes/ranking`);
+        const pontuacoesResponse = await fetch(`/pontuacoes/ranking`);
         const pontuacoesData = await pontuacoesResponse.json();
-        const usuariosResponse = await fetch('http://localhost:8080/usuarios/listar');
+        const usuariosResponse = await fetch('/usuarios/listar');
         const usuariosData = await usuariosResponse.json();
-        const interessadosResponse = await fetch(`http://localhost:8080/dashboardRecrutador/${getIdUsuarioLogado()}/listar/interessados`);
+        const interessadosResponse = await fetch(`/dashboardRecrutador/${getIdUsuarioLogado()}/listar/interessados`);
         const interessadosData = await interessadosResponse.json();
-        const contratadosResponse = await fetch(`http://localhost:8080/dashboardRecrutador/${getIdUsuarioLogado()}/listar/contratados`);
+        const contratadosResponse = await fetch(`/dashboardRecrutador/${getIdUsuarioLogado()}/listar/contratados`);
         const contratadosData = await contratadosResponse.json();
-        const processoSeletivoResponse = await fetch(`http://localhost:8080/dashboardRecrutador/${getIdUsuarioLogado()}/listar/processoSeletivo`);
+        const processoSeletivoResponse = await fetch(`/dashboardRecrutador/${getIdUsuarioLogado()}/listar/processoSeletivo`);
         const processoSeletivoData = await processoSeletivoResponse.json();
-        const favoritosResponse = await fetch(`http://localhost:8080/dashboardRecrutador/${getIdUsuarioLogado()}/listar/favoritos`);
+        const favoritosResponse = await fetch(`/dashboardRecrutador/${getIdUsuarioLogado()}/listar/favoritos`);
         const favoritosData = await favoritosResponse.json();
         const favoritosIds = favoritosData.map(favorito => favorito.id);
         const containerCursos = document.getElementById('cursos_container');

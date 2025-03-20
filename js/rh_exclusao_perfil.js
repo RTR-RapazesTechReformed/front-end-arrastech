@@ -12,7 +12,7 @@ async function excluirParcialmente() {
     console.log('Excluindo parcialmente usuário com:', email);
 
     try {
-        const response = await fetch('http://localhost:8080/usuarios/deletar', {
+        const response = await fetch('/usuarios/deletar', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email, senha })
@@ -82,7 +82,7 @@ async function excluirPermanentemente() {
     console.log('Excluindo permanentemente usuário com:', email);
 
     try {
-        const response = await fetch('http://localhost:8080/usuarios/deletar', {
+        const response = await fetch('/usuarios/deletar', {
             method: 'DELETE',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email, senha })

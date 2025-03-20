@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 async function carregarAlunos() {
     try {
-        const response = await fetch('http://localhost:8080/usuarios/listar?tipo=Aluno')    
+        const response = await fetch('/usuarios/listar?tipo=Aluno')    
         if (response.ok) {
             const alunos = await response.json()
             const tabelaAlunos = document.getElementById('tabela-alunos')
@@ -113,7 +113,7 @@ async function carregarImagemPerfil(id) {
     }
 
     try {
-        const response = await fetch(`http://localhost:8080/usuarios/imagem/${id}`)
+        const response = await fetch(`/usuarios/imagem/${id}`)
         if (response.ok) {
             const imageBlob = await response.blob()
             if (imageBlob.size > 0) {
@@ -168,7 +168,7 @@ function gerarGraficoAlunosPorCurso(nomeCursos, quantidadeAlunos, coresCursos) {
 
 async function carregarAlunosPorCurso() {
     try {
-        const response = await fetch('http://localhost:8080/dashboardAdm/alunos-por-curso')
+        const response = await fetch('/dashboardAdm/alunos-por-curso')
         if (response.ok) {
             const cursosData = await response.json()
 

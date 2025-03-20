@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8080";
+const API_URL = "";
 const tipoUsuarioEnum = {
   Aluno: 1,
   Recrutador: 2,

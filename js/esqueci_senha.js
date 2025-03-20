@@ -10,7 +10,7 @@ function verificaEmail() {
         botaoProximo.textContent = "Carregando...";
 
         sessionStorage.setItem('email', email);
-        fetch('http://localhost:8080/reset-senha/solicitar-troca', {
+        fetch('/reset-senha/solicitar-troca', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -46,7 +46,7 @@ function verificaToken() {
 
     if (codigo && email) {
         loader.style.display = 'flex';
-        fetch('http://localhost:8080/reset-senha/verificar-token', {
+        fetch('/reset-senha/verificar-token', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -100,7 +100,7 @@ function validarSenha() {
 
     loader.style.display = 'flex';
 
-    fetch('http://localhost:8080/reset-senha/nova-senha', {
+    fetch('/reset-senha/nova-senha', {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json'

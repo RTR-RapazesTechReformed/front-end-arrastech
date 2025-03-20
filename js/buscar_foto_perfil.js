@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
         async function fetchProfileImage() {
             const userId = JSON.parse(sessionStorage.getItem('user')).id;
             try {
-                const response = await fetch(`http://localhost:8080/usuarios/imagem/${userId}`);
+                const response = await fetch(`/usuarios/imagem/${userId}`);
                 if (response.ok) {
                     const imageBlob = await response.blob();
 

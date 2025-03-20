@@ -61,7 +61,7 @@ async function salvarMudancas(event) {
     if (novaSenha) dados.senha = novaSenha;
 
     const userId = getIdUsuarioLogado();
-    const endpoint = `http://localhost:8080/usuarios/atualizar/${userId}`;
+    const endpoint = `/usuarios/atualizar/${userId}`;
     loader.style.display = 'flex';
 
     try {
@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     async function listarFavoritos() {
         loader.style.display = 'flex';
         try {
-            const response = await fetch(`http://localhost:8080/dashboardRecrutador/${idUsuario}/listar/favoritos`);
+            const response = await fetch(`/dashboardRecrutador/${idUsuario}/listar/favoritos`);
             const data = await response.json();
 
             const container = document.querySelector(".bloco_alunos_favoritos");
@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 container.appendChild(noFavoritesMessage);
             } else {
                 for (const aluno of data) {
-                    const pontosResponse = await fetch(`http://localhost:8080/pontuacoes/pontos-totais/${aluno.id}`);
+                    const pontosResponse = await fetch(`/pontuacoes/pontos-totais/${aluno.id}`);
                     const pontosData = await pontosResponse.json();
 
                     let maxPontos = -1;
@@ -186,7 +186,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     async function listarInteressados() {
         loader.style.display = 'flex';
         try {
-            const response = await fetch(`http://localhost:8080/dashboardRecrutador/${idUsuario}/listar/interessados`);
+            const response = await fetch(`/dashboardRecrutador/${idUsuario}/listar/interessados`);
             const data = await response.json();
     
             const container = document.querySelector(".bloco_alunos");
@@ -208,7 +208,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 container.appendChild(noInterestedMessage);
             } else {
                 for (const aluno of data) {
-                    const pontosResponse = await fetch(`http://localhost:8080/pontuacoes/pontos-totais/${aluno.id}`);
+                    const pontosResponse = await fetch(`/pontuacoes/pontos-totais/${aluno.id}`);
                     const pontosData = await pontosResponse.json();
     
                     let maxPontos = -1;
@@ -254,7 +254,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     async function listarCancelados() {
         loader.style.display = 'flex';
         try {
-            const response = await fetch(`http://localhost:8080/dashboardRecrutador/${idUsuario}/listar/cancelados`);
+            const response = await fetch(`/dashboardRecrutador/${idUsuario}/listar/cancelados`);
             const data = await response.json();
     
             const container = document.querySelector(".bloco_alunos_cancelados");
@@ -272,7 +272,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 const alunoDivs = [];
     
                 for (const aluno of data) {
-                    const pontosResponse = await fetch(`http://localhost:8080/pontuacoes/pontos-totais/${aluno.id}`);
+                    const pontosResponse = await fetch(`/pontuacoes/pontos-totais/${aluno.id}`);
                     const pontosData = await pontosResponse.json();
     
                     let maxPontos = -1;
@@ -317,7 +317,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                     const isDesinteressado = desinteressados.some(d => d.id === aluno.id);
     
                     if (!isFavorito && !isDesinteressado) {
-                        const response = await fetch(`http://localhost:8080/dashboardRecrutador/${idUsuario}/contratados/${aluno.id}`, {
+                        const response = await fetch(`/dashboardRecrutador/${idUsuario}/contratados/${aluno.id}`, {
                             method: 'DELETE', 
                         });
     
@@ -357,7 +357,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             let response;
     
             if (alunoFavoritosIndex !== -1) {
-                response = await fetch(`http://localhost:8080/dashboardRecrutador/${getIdUsuarioLogado()}/favoritos/${idAluno}`, {
+                response = await fetch(`/dashboardRecrutador/${getIdUsuarioLogado()}/favoritos/${idAluno}`, {
                     method: 'POST',
                 });
     
@@ -376,7 +376,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 const alunoDesinteressado = desinteressados[alunoDesinteressadosIndex];
                 const listaAssociada = alunoDesinteressado.lista;  
     
-                response = await fetch(`http://localhost:8080/dashboardRecrutador/${getIdUsuarioLogado()}/${listaAssociada}/${idAluno}`, {
+                response = await fetch(`/dashboardRecrutador/${getIdUsuarioLogado()}/${listaAssociada}/${idAluno}`, {
                     method: 'POST',
                 });
     
@@ -402,7 +402,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     window.desfavoritar = async function (idAluno) {
         loader.style.display = 'flex';
         try {
-            const response = await fetch(`http://localhost:8080/dashboardRecrutador/${idUsuario}/cancelados/${idAluno}`, {
+            const response = await fetch(`/dashboardRecrutador/${idUsuario}/cancelados/${idAluno}`, {
                 method: 'POST',
             });
 
@@ -516,7 +516,7 @@ async function interessarAluno(idAlunoSelecionado) {
     loader.style.display = 'flex';
 
     try {
-        const response = await fetch(`http://localhost:8080/dashboardRecrutador/${idRecrutador}/interessados/${idAlunoSelecionado}`, {
+        const response = await fetch(`/dashboardRecrutador/${idRecrutador}/interessados/${idAlunoSelecionado}`, {
             method: "POST",
         });
 
@@ -544,7 +544,7 @@ async function contratarAluno(idAluno) {
     fecharAtribuicao();
 
     try {
-        const response = await fetch(`http://localhost:8080/dashboardRecrutador/${idRecrutador}/contratados/${idAluno}`, {
+        const response = await fetch(`/dashboardRecrutador/${idRecrutador}/contratados/${idAluno}`, {
             method: "POST",
         });
 
@@ -553,7 +553,7 @@ async function contratarAluno(idAluno) {
 
             await listarContratados();
 
-            const contratadosData = await fetch(`http://localhost:8080/dashboardRecrutador/${idRecrutador}/listar/contratados`);
+            const contratadosData = await fetch(`/dashboardRecrutador/${idRecrutador}/listar/contratados`);
             const contratados = await contratadosData.json();
             sessionStorage.setItem('quantidadeContratados', contratados.length);
 
@@ -579,7 +579,7 @@ async function listarContratados() {
     loader.style.display = 'flex';
 
     try {
-        const response = await fetch(`http://localhost:8080/dashboardRecrutador/${idRecrutador}/listar/contratados`);
+        const response = await fetch(`/dashboardRecrutador/${idRecrutador}/listar/contratados`);
         const data = await response.json();
 
         const container = document.querySelector(".bloco_alunos_contratados");
@@ -657,7 +657,7 @@ async function processoSeletivoAluno(idAluno) {
     fecharAtribuicao();
 
     try {
-        const response = await fetch(`http://localhost:8080/dashboardRecrutador/${idRecrutador}/processoSeletivo/${idAluno}`, {
+        const response = await fetch(`/dashboardRecrutador/${idRecrutador}/processoSeletivo/${idAluno}`, {
             method: "POST",
         });
 
@@ -666,7 +666,7 @@ async function processoSeletivoAluno(idAluno) {
 
             await listarProcessoSeletivo();
 
-            const processoSeletivoData = await fetch(`http://localhost:8080/dashboardRecrutador/${idRecrutador}/listar/processoSeletivo`);
+            const processoSeletivoData = await fetch(`/dashboardRecrutador/${idRecrutador}/listar/processoSeletivo`);
             const processoSeletivo = await processoSeletivoData.json();
             sessionStorage.setItem('quantidadeProcessoSeletivo', processoSeletivo.length);
 
@@ -688,7 +688,7 @@ async function listarProcessoSeletivo() {
     const idRecrutador = user.id;
     loader.style.display = 'flex';
     try {
-        const response = await fetch(`http://localhost:8080/dashboardRecrutador/${idRecrutador}/listar/processoSeletivo`);
+        const response = await fetch(`/dashboardRecrutador/${idRecrutador}/listar/processoSeletivo`);
         const data = await response.json();
 
         const container = document.querySelector(".bloco_alunos_processo_seletivo");
@@ -712,7 +712,7 @@ async function listarProcessoSeletivo() {
             container.appendChild(noInterestedMessage);
         } else {
             for (const aluno of data) {
-                const pontosResponse = await fetch(`http://localhost:8080/pontuacoes/pontos-totais/${aluno.id}`);
+                const pontosResponse = await fetch(`/pontuacoes/pontos-totais/${aluno.id}`);
                 const pontosData = await pontosResponse.json();
 
                 let maxPontos = -1;
@@ -761,7 +761,7 @@ async function desinteressarAluno(idAluno, elementoChamador) {
     const idRecrutador = user.id;
     loader.style.display = 'flex';
     try {
-        const response = await fetch(`http://localhost:8080/dashboardRecrutador/${idRecrutador}/cancelados/${idAluno}`, {
+        const response = await fetch(`/dashboardRecrutador/${idRecrutador}/cancelados/${idAluno}`, {
             method: "POST",
         });
 

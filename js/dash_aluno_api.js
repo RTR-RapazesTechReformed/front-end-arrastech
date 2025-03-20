@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   async function carregarDados(dataInicio, dataFim) {
     try {
-      const baseURL = `http://localhost:8080/pontuacoes`;
+      const baseURL = `/pontuacoes`;
 
       const atividadesData = await fetchData(
         `${baseURL}/kpi-entregas/${user.id}${gerarQueryString(
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       updateTopCursoDisplay(topCurso);
 
       const progressoAtualMetaEstudo = await fetchData(
-        `http://localhost:8080/meta-de-estudo/${user.id}`
+        `/meta-de-estudo/${user.id}`
       );
       if (progressoAtualMetaEstudo) {
         const progressoAtualMetaEstudo2 = getProgressoAtualMetaEstudo(
@@ -301,7 +301,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   async function initMedalhaSelect(dataInicio, dataFim) {
     try {
       const queryString = gerarQueryString(dataInicio, dataFim);
-      const response = await fetch(`http://localhost:8080/pontuacoes/pontos-totais/${user.id}${queryString}`);
+      const response = await fetch(`/pontuacoes/pontos-totais/${user.id}${queryString}`);
   
       if (!response.ok) {
         throw new Error("Erro na resposta da API");
@@ -978,7 +978,7 @@ async function cadastrarMetaEstudo(studyPlan, days) {
     const nomeDia = day;
     const qtdTempoEstudo = studyPlan[day];
 
-    const url = new URL("http://localhost:8080/meta-de-estudo/cadastro");
+    const url = new URL("/meta-de-estudo/cadastro");
     url.searchParams.append("metaEstudoSemanaId", user.id);
     url.searchParams.append("nomeDia", nomeDia);
     url.searchParams.append("qtdTempoEstudo", qtdTempoEstudo);
@@ -1006,7 +1006,7 @@ async function cadastrarMetaEstudo(studyPlan, days) {
 async function carregarTabelaPontuacoes(idAluno) {
   try {
     const response = await fetch(
-      `http://localhost:8080/pontuacoes/lista?idAluno=${idAluno}`
+      `/pontuacoes/lista?idAluno=${idAluno}`
     );
 
     if (!response.ok) {

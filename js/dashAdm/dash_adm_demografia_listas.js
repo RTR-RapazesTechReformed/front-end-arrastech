@@ -23,7 +23,7 @@ let graficoSexo, graficoEtnia, graficoEscolaridade, graficoCidade, graficoCursos
 
 async function listarEmpresas() {
     try {
-        const resposta = await fetch('http://localhost:8080/empresa/listar')
+        const resposta = await fetch('/empresa/listar')
         if (!resposta.ok) {
             throw new Error('Erro ao buscar os dados das empresas')
         }
@@ -52,7 +52,7 @@ async function buscarDados() {
         const selectLista = document.getElementById('selectListas')
         const tipoLista = selectLista.value
 
-        let url = `http://localhost:8080/dashboardAdm/demografia-alunos?tipoLista=${tipoLista}`
+        let url = `/dashboardAdm/demografia-alunos?tipoLista=${tipoLista}`
 
         if (empresaId) {
             url += `&idEmpresa=${empresaId}`
@@ -76,7 +76,7 @@ async function gerarRelatorioEmpresas() {
         const selectLista = document.getElementById('selectListas')
         const tipoLista = selectLista.value
 
-        let url = `http://localhost:8080/dashboardAdm/relatorio-demografia-listas?tipoLista=${tipoLista}`
+        let url = `/dashboardAdm/relatorio-demografia-listas?tipoLista=${tipoLista}`
 
         if (empresaId) {
             url += `&idEmpresa=${empresaId}`
@@ -138,7 +138,7 @@ async function gerarRelatorioAlunos() {
         const escolaridade = document.getElementById('select-escolaridade').value
         const arquivo = document.getElementById('select-arquivo').value 
 
-        let url = `http://localhost:8080/dashboardAdm/relatorio-alunos?`
+        let url = `/dashboardAdm/relatorio-alunos?`
 
         if (sexo) url += `sexo=${sexo}&`
         if (etnia) url += `etnia=${etnia}&`
@@ -178,7 +178,7 @@ async function enviarArquivo() {
 
     try {
     
-        const response = await fetch('http://localhost:8080/dashboardAdm/cadastrar-alunos-lote', {
+        const response = await fetch('/dashboardAdm/cadastrar-alunos-lote', {
             method: 'POST',
             body: formData
         })

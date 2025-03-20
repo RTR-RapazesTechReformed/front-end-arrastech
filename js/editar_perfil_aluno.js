@@ -169,7 +169,7 @@ async function salvarMudancas(event) {
     loader.style.display = 'flex';
     try {
         if (Object.keys(updates).length > 0) {
-            const response = await fetch(`http://localhost:8080/usuarios/atualizar/${idUsuario}`, {
+            const response = await fetch(`/usuarios/atualizar/${idUsuario}`, {
                 method: 'PATCH',
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(updates)
@@ -181,7 +181,7 @@ async function salvarMudancas(event) {
         }
 
         if (Object.keys(enderecoUpdates).length > 0) {
-            const enderecoResponse = await fetch(`http://localhost:8080/enderecos/atualizar/${idEndereco}`, {
+            const enderecoResponse = await fetch(`/enderecos/atualizar/${idEndereco}`, {
                 method: 'PATCH',
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(enderecoUpdates)
@@ -214,7 +214,7 @@ async function salvarMudancas(event) {
             loader.style.display = 'flex';
             try {
                 const novaSenha = updates.senha;
-                const senhaResponse = await fetch('http://localhost:8080/reset-senha/nova-senha', {
+                const senhaResponse = await fetch('/reset-senha/nova-senha', {
                     method: 'PATCH',
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ email: data.email, novaSenha })

@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
         async function buscarEExibirRanking() {
             loader.style.display = 'flex';
             try {
-                const response = await fetch('http://localhost:8080/pontuacoes/ranking');
+                const response = await fetch('/pontuacoes/ranking');
                 if (!response.ok) throw new Error('Falha ao buscar o ranking.');
 
                 const dados = await response.json();
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (!imgElement) return;
             loader.style.display = 'flex';
             try {
-                const response = await fetch(`http://localhost:8080/usuarios/imagem/${id}`);
+                const response = await fetch(`/usuarios/imagem/${id}`);
                 if (response.ok) {
                     const imageBlob = await response.blob();
                     if (imageBlob.size > 0) {
@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function () {
         async function popularFiltroCategorias() {
             loader.style.display = 'flex';
             try {
-                const response = await fetch('http://localhost:8080/dashboardRecrutador/listar');
+                const response = await fetch('/dashboardRecrutador/listar');
                 if (!response.ok) throw new Error('Falha ao buscar as categorias dos cursos.');
         
                 const dados = await response.json();
@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function () {
             loader.style.display = 'flex'
         
             try {
-                const response = await fetch(`http://localhost:8080/dashboardRecrutador/listar?categoria=${categoria}`)
+                const response = await fetch(`/dashboardRecrutador/listar?categoria=${categoria}`)
                 if (!response.ok) throw new Error('Falha ao buscar cursos da categoria selecionada.')
         
                 const cursos = await response.json()
@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 // Busca o ranking para cada curso da categoria
-                const responseRanking = await fetch('http://localhost:8080/pontuacoes/ranking');
+                const responseRanking = await fetch('/pontuacoes/ranking');
                 if (!responseRanking.ok) throw new Error('Falha ao buscar o ranking dos cursos.');
 
                 const dadosRanking = await responseRanking.json();
@@ -323,7 +323,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (cursoSelecionadoNome === 'selecione um curso') {
                     await buscarEExibirRanking();
                 } else {
-                    const response = await fetch('http://localhost:8080/pontuacoes/ranking');
+                    const response = await fetch('/pontuacoes/ranking');
                     if (!response.ok) throw new Error('Falha ao buscar o ranking por curso.');
         
                     const dados = await response.json();

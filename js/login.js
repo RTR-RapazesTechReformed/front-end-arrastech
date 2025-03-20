@@ -34,7 +34,7 @@ async function realizarLogin() {
 
                 setTimeout(async () => {
                     try {
-                        const reativarResponse = await fetch('http://localhost:8080/usuarios/reativar', {
+                        const reativarResponse = await fetch('/usuarios/reativar', {
                             method: 'POST',
                             headers: { "Content-Type": "application/json" },
                             body: JSON.stringify({ email, senha })
@@ -49,7 +49,7 @@ async function realizarLogin() {
 
                         // Buscar informações do usuário após reativação
                         const userId = data.id; // Use o ID do usuário armazenado no sessionStorage
-                        const userResponse = await fetch(`http://localhost:8080/usuarios/buscar/${userId}`);
+                        const userResponse = await fetch(`/usuarios/buscar/${userId}`);
                         
                         if (!userResponse.ok) {
                             throw new Error('Erro ao buscar informações do usuário');

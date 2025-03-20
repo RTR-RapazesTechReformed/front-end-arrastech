@@ -48,7 +48,7 @@ async function buscarNotificacoes() {
     }
 
     try {
-        const url = `http://localhost:8080/notificacoes/${idAluno}`;
+        const url = `/notificacoes/${idAluno}`;
 
         const response = await fetch(url);
 
@@ -167,7 +167,7 @@ function marcarComoLida(event, idNotificacao) {
         return;
     }
 
-    const url = `http://localhost:8080/notificacoes/${idAluno}/notificacoes/${idNotificacao}/marcar-como-lida`;
+    const url = `/notificacoes/${idAluno}/notificacoes/${idNotificacao}/marcar-como-lida`;
 
     fetch(url, { method: 'PATCH' })
         .then(response => {

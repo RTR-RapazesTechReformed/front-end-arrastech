@@ -114,7 +114,7 @@ async function cadastrarUsuario() {
     
 
     try {
-        const response = await fetch('http://localhost:8080/usuarios/cadastro', {
+        const response = await fetch('/usuarios/cadastro', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(usuario)
@@ -138,7 +138,7 @@ async function realizarLoginAutomatico(email, senha) {
     try {
         console.log('Tentando fazer login automaticamente com:', email);
 
-        const response = await fetch('http://localhost:8080/usuarios/login', {
+        const response = await fetch('/usuarios/login', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email, senha })

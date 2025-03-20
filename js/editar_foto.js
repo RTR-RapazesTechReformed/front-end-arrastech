@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const userId = JSON.parse(sessionStorage.getItem('user')).id;
         loader.style.display = 'flex';
         try {
-            const response = await fetch(`http://localhost:8080/usuarios/imagem/${userId}`);
+            const response = await fetch(`/usuarios/imagem/${userId}`);
             if (response.ok) {
                 const imageBlob = await response.blob();
 
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
             loader.style.display = 'flex';
             try {
                 const userId = JSON.parse(sessionStorage.getItem('user')).id;
-                const response = await fetch(`http://localhost:8080/usuarios/atualizar-imagem/${userId}`, {
+                const response = await fetch(`/usuarios/atualizar-imagem/${userId}`, {
                     method: 'PATCH', 
                     body: formData
                 });
