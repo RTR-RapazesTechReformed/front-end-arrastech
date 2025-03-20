@@ -5,7 +5,7 @@ async function realizarLogin() {
     try {
         console.log('Tentando fazer login com:', email);
 
-        const response = await fetch('http://localhost:8080/usuarios/login', {
+        const response = await fetch('/usuarios/login', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email, senha })
